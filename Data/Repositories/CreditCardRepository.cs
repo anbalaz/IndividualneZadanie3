@@ -5,12 +5,11 @@ using System.Data.SqlClient;
 
 namespace Data.Repositories
 {
-    public class TownRepository:ITownRepository
+    public class CreditCardRepository : ICreditCardRepository
     {
-
-        public List<Town> GeListData()
+        public List<CreditCard> GeListData()
         {
-            List<Town> towns = new List<Town>();
+            List<CreditCard> creditCards = new List<CreditCard>();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
                 connection.Open();
@@ -24,11 +23,13 @@ namespace Data.Repositories
                             {
                                 while (reader.Read())
                                 {
-                                    Town town = new Town();
-                                    town.Id = reader.GetInt32(0);
-                                    town.Name = reader.GetString(1);
+                                    BankAccount bankAccount = new BankAccount();
 
-                                    towns.Add(town);
+                                    CreditCard creditCard = new CreditCard();
+                                    creditCard.Id = reader.GetInt32(0);
+                                    //creditCard.Name = reader.GetString(1);
+
+                                    creditCards.Add(creditCard);
                                 }
                             }
                         }
@@ -38,7 +39,9 @@ namespace Data.Repositories
                         Console.WriteLine($"Exception occured: \n{ ex}");
                     }
                 }
-                return towns;
+                return creditCards;
+
+
             }
         }
     }

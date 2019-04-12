@@ -15,7 +15,7 @@ namespace TransformerBank
         [STAThread]
         static void Main()
         {
-            IRepository townRepository = new TownRepository();
+            ITownRepository townRepository = new TownRepository();
             townRepository.GeListData();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

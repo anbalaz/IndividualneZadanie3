@@ -5,7 +5,7 @@ namespace Data.Models
     public class BankAccount
     {
         public int Id { get; set; }
-        public int IdClient { get; set; }
+        public Client Client { get; set; }
         public string IBAN { get; set; }
         public DateTime CreateAccount { get; set; }
         public DateTime DeleteAccount { get; set; }

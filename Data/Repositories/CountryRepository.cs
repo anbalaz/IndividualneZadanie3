@@ -5,12 +5,11 @@ using System.Data.SqlClient;
 
 namespace Data.Repositories
 {
-    public class TownRepository:ITownRepository
+    public class CountryRepository: ICountryRepository
     {
-
-        public List<Town> GeListData()
+        public List<Country> GeListData()
         {
-            List<Town> towns = new List<Town>();
+            List<Country> countries = new List<Country>();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
                 connection.Open();
@@ -24,11 +23,11 @@ namespace Data.Repositories
                             {
                                 while (reader.Read())
                                 {
-                                    Town town = new Town();
-                                    town.Id = reader.GetInt32(0);
-                                    town.Name = reader.GetString(1);
+                                    Country country = new Country();
+                                    country.Id = reader.GetInt32(0);
+                                    country.Name = reader.GetString(1);
 
-                                    towns.Add(town);
+                                    countries.Add(country);
                                 }
                             }
                         }
@@ -38,7 +37,7 @@ namespace Data.Repositories
                         Console.WriteLine($"Exception occured: \n{ ex}");
                     }
                 }
-                return towns;
+                return countries;
             }
         }
     }

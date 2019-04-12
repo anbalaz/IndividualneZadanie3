@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public interface IRepository
+    public interface ITownRepository
     {
         List<Town> GeListData();
     }

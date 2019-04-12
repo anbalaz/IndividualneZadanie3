@@ -5,8 +5,8 @@ namespace Data.Models
     public class Transactions
     {
         public int Id { get; set; }
-        public int IdBankAccountSend { get; set; }
-        public int IdBankAccountReceive { get; set; }
+        public BankAccount BankAccountSend { get; set; }
+        public BankAccount BankAccountReceive { get; set; }
         public string VS { get; set; }
         public string SS { get; set; }
         public string CS { get; set; }

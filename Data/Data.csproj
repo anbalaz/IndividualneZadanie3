@@ -42,10 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeleteThisEmptyClass.cs" />
+    <Compile Include="Models\BankAccount.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\CreditCard.cs" />
+    <Compile Include="Models\Town.cs" />
+    <Compile Include="Models\Transactions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

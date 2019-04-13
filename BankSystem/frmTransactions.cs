@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,16 @@ namespace BankSystem
         public frmTransactions()
         {
             InitializeComponent();
+            SetUpTransactionsGridSet();
+        }
+
+
+
+        private void SetUpTransactionsGridSet()
+        {
+            TransactionsRepositories transactionsRepositories = new TransactionsRepositories();
+            AllTransactionsDtGrdVw.DataSource = transactionsRepositories.GetAllTransactions();
+            AllTransactionsDtGrdVw.DataMember = "Transactions";
         }
 
         /// <summary>

@@ -20,6 +20,29 @@ namespace BankSystem
             InitializeComponent();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// Used when viewing/updating existing account.
         /// </summary>

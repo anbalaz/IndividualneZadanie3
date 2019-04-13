@@ -28,36 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.AllTransactionsDtGrdVw = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.AllTransactionsDtGrdVw)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // AllTransactionsDtGrdVw
             // 
-            this.label1.BackColor = System.Drawing.Color.Coral;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(560, 343);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Tu bude v gride prehľad transakcií.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AllTransactionsDtGrdVw.AllowUserToAddRows = false;
+            this.AllTransactionsDtGrdVw.AllowUserToDeleteRows = false;
+            this.AllTransactionsDtGrdVw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AllTransactionsDtGrdVw.Location = new System.Drawing.Point(12, 12);
+            this.AllTransactionsDtGrdVw.Name = "AllTransactionsDtGrdVw";
+            this.AllTransactionsDtGrdVw.ReadOnly = true;
+            this.AllTransactionsDtGrdVw.Size = new System.Drawing.Size(560, 337);
+            this.AllTransactionsDtGrdVw.TabIndex = 4;
             // 
             // frmTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AllTransactionsDtGrdVw);
             this.Name = "frmTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTransactions";
+            ((System.ComponentModel.ISupportInitialize)(this.AllTransactionsDtGrdVw)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView AllTransactionsDtGrdVw;
     }
 }

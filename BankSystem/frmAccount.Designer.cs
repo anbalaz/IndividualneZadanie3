@@ -29,34 +29,35 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.iBANtxtBx = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.firstNameTxtBx = new System.Windows.Forms.TextBox();
+            this.identityCardTxtBx = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.lastNameTxtBx = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+            this.streetTxtBx = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.emailTxtBx = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.townCmbBx = new System.Windows.Forms.ComboBox();
             this.createClientBttn = new System.Windows.Forms.Button();
             this.CancelBttn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericTextBox1 = new Controls.NumericTextBox();
-            this.numericTextBox2 = new Controls.NumericTextBox();
+            this.postalCodeNmrcTxtBx = new Controls.NumericTextBox();
+            this.phoneNumberNmrcTxtBx = new Controls.NumericTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.limitUpDwn = new System.Windows.Forms.NumericUpDown();
+            this.streetNumberTxtBx = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.limitUpDwn)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -68,19 +69,12 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "CREATE BANK ACCOUNT";
             // 
-            // textBox1
+            // iBANtxtBx
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(9, 134);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(146, 20);
-            this.textBox2.TabIndex = 7;
+            this.iBANtxtBx.Location = new System.Drawing.Point(9, 76);
+            this.iBANtxtBx.Name = "iBANtxtBx";
+            this.iBANtxtBx.Size = new System.Drawing.Size(208, 20);
+            this.iBANtxtBx.TabIndex = 6;
             // 
             // label3
             // 
@@ -118,19 +112,19 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "FIRST NAME";
             // 
-            // textBox3
+            // firstNameTxtBx
             // 
-            this.textBox3.Location = new System.Drawing.Point(9, 97);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 12;
+            this.firstNameTxtBx.Location = new System.Drawing.Point(9, 97);
+            this.firstNameTxtBx.Name = "firstNameTxtBx";
+            this.firstNameTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.firstNameTxtBx.TabIndex = 12;
             // 
-            // textBox4
+            // identityCardTxtBx
             // 
-            this.textBox4.Location = new System.Drawing.Point(9, 48);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 11;
+            this.identityCardTxtBx.Location = new System.Drawing.Point(9, 48);
+            this.identityCardTxtBx.Name = "identityCardTxtBx";
+            this.identityCardTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.identityCardTxtBx.TabIndex = 11;
             // 
             // label7
             // 
@@ -141,12 +135,12 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "LAST NAME";
             // 
-            // textBox5
+            // lastNameTxtBx
             // 
-            this.textBox5.Location = new System.Drawing.Point(148, 97);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 15;
+            this.lastNameTxtBx.Location = new System.Drawing.Point(148, 97);
+            this.lastNameTxtBx.Name = "lastNameTxtBx";
+            this.lastNameTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.lastNameTxtBx.TabIndex = 15;
             // 
             // label8
             // 
@@ -166,20 +160,12 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "STREET";
             // 
-            // textBox7
+            // streetTxtBx
             // 
-            this.textBox7.Location = new System.Drawing.Point(150, 149);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 19;
-            // 
-            // domainUpDown1
-            // 
-            this.domainUpDown1.Location = new System.Drawing.Point(157, 207);
-            this.domainUpDown1.Name = "domainUpDown1";
-            this.domainUpDown1.Size = new System.Drawing.Size(47, 20);
-            this.domainUpDown1.TabIndex = 21;
-            this.domainUpDown1.Text = "domainUpDown1";
+            this.streetTxtBx.Location = new System.Drawing.Point(150, 149);
+            this.streetTxtBx.Name = "streetTxtBx";
+            this.streetTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.streetTxtBx.TabIndex = 19;
             // 
             // label10
             // 
@@ -208,12 +194,12 @@
             this.label12.TabIndex = 25;
             this.label12.Text = "PHONE NUMBER";
             // 
-            // textBox10
+            // emailTxtBx
             // 
-            this.textBox10.Location = new System.Drawing.Point(157, 266);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 28;
+            this.emailTxtBx.Location = new System.Drawing.Point(157, 266);
+            this.emailTxtBx.Name = "emailTxtBx";
+            this.emailTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.emailTxtBx.TabIndex = 28;
             // 
             // label13
             // 
@@ -224,13 +210,13 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "EMAIL";
             // 
-            // comboBox1
+            // townCmbBx
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(11, 149);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 29;
+            this.townCmbBx.FormattingEnabled = true;
+            this.townCmbBx.Location = new System.Drawing.Point(11, 149);
+            this.townCmbBx.Name = "townCmbBx";
+            this.townCmbBx.Size = new System.Drawing.Size(121, 21);
+            this.townCmbBx.TabIndex = 29;
             // 
             // createClientBttn
             // 
@@ -240,6 +226,7 @@
             this.createClientBttn.TabIndex = 30;
             this.createClientBttn.Text = "Commit";
             this.createClientBttn.UseVisualStyleBackColor = true;
+            this.createClientBttn.Click += new System.EventHandler(this.createClientBttn_Click);
             // 
             // CancelBttn
             // 
@@ -249,27 +236,28 @@
             this.CancelBttn.TabIndex = 31;
             this.CancelBttn.Text = "Cancel";
             this.CancelBttn.UseVisualStyleBackColor = true;
+            this.CancelBttn.Click += new System.EventHandler(this.CancelBttn_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericTextBox2);
-            this.groupBox1.Controls.Add(this.numericTextBox1);
-            this.groupBox1.Controls.Add(this.domainUpDown1);
+            this.groupBox1.Controls.Add(this.streetNumberTxtBx);
+            this.groupBox1.Controls.Add(this.postalCodeNmrcTxtBx);
+            this.groupBox1.Controls.Add(this.phoneNumberNmrcTxtBx);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox10);
+            this.groupBox1.Controls.Add(this.emailTxtBx);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.townCmbBx);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.identityCardTxtBx);
+            this.groupBox1.Controls.Add(this.firstNameTxtBx);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.lastNameTxtBx);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.streetTxtBx);
             this.groupBox1.Location = new System.Drawing.Point(35, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(286, 298);
@@ -277,25 +265,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ADD NEW USER";
             // 
-            // numericTextBox1
+            // postalCodeNmrcTxtBx
             // 
-            this.numericTextBox1.Location = new System.Drawing.Point(11, 266);
-            this.numericTextBox1.Name = "numericTextBox1";
-            this.numericTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.numericTextBox1.TabIndex = 33;
+            this.postalCodeNmrcTxtBx.Location = new System.Drawing.Point(9, 206);
+            this.postalCodeNmrcTxtBx.Name = "postalCodeNmrcTxtBx";
+            this.postalCodeNmrcTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.postalCodeNmrcTxtBx.TabIndex = 34;
             // 
-            // numericTextBox2
+            // phoneNumberNmrcTxtBx
             // 
-            this.numericTextBox2.Location = new System.Drawing.Point(9, 206);
-            this.numericTextBox2.Name = "numericTextBox2";
-            this.numericTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.numericTextBox2.TabIndex = 34;
+            this.phoneNumberNmrcTxtBx.Location = new System.Drawing.Point(11, 266);
+            this.phoneNumberNmrcTxtBx.Name = "phoneNumberNmrcTxtBx";
+            this.phoneNumberNmrcTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.phoneNumberNmrcTxtBx.TabIndex = 33;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.iBANtxtBx);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(363, 27);
@@ -305,11 +292,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "CREATE BANK ACCOUNT";
             // 
+            // limitUpDwn
+            // 
+            this.limitUpDwn.DecimalPlaces = 2;
+            this.limitUpDwn.Increment = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.limitUpDwn.Location = new System.Drawing.Point(363, 203);
+            this.limitUpDwn.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.limitUpDwn.Name = "limitUpDwn";
+            this.limitUpDwn.Size = new System.Drawing.Size(120, 20);
+            this.limitUpDwn.TabIndex = 36;
+            // 
+            // streetNumberTxtBx
+            // 
+            this.streetNumberTxtBx.Location = new System.Drawing.Point(157, 206);
+            this.streetNumberTxtBx.Name = "streetNumberTxtBx";
+            this.streetNumberTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.streetNumberTxtBx.TabIndex = 35;
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 353);
+            this.Controls.Add(this.limitUpDwn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CancelBttn);
             this.Controls.Add(this.createClientBttn);
@@ -321,37 +334,38 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.limitUpDwn)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox iBANtxtBx;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox firstNameTxtBx;
+        private System.Windows.Forms.TextBox identityCardTxtBx;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox lastNameTxtBx;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.TextBox streetTxtBx;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox emailTxtBx;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox townCmbBx;
         private System.Windows.Forms.Button createClientBttn;
         private System.Windows.Forms.Button CancelBttn;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Controls.NumericTextBox numericTextBox2;
-        private Controls.NumericTextBox numericTextBox1;
+        private Controls.NumericTextBox postalCodeNmrcTxtBx;
+        private Controls.NumericTextBox phoneNumberNmrcTxtBx;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.NumericUpDown limitUpDwn;
+        private System.Windows.Forms.TextBox streetNumberTxtBx;
     }
 }

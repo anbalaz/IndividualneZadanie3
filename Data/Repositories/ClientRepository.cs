@@ -4,13 +4,14 @@ using System.Data.SqlClient;
 
 namespace Data.Repositories
 {
-    public class ClientRepository
+    public class ClientRepository : IClientRepository
     {
         private string _createClient = @"INSERT INTO Client 
                                         (IdentityCard,FirstName,LastName,TownId,Street,StreetNumber,PostalCode,PhoneNumber,Email)
                                         output inserted.Id
                                         VALUES (@identityCard,@firstName,@lastName,@town,@street,@streetNumber,@postalCode,@phoneNumber,@email);";
 
+        private string _deleteClientById = @"DELETE FROM Client WHERE ID=@clientId;";
 
         public int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
@@ -45,6 +46,34 @@ namespace Data.Repositories
                 }
 
             }
+        }
+
+        public int DeleteClient(int clientId)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = _deleteClientById;
+                        command.Parameters.Add("@clientId", SqlDbType.Int).Value = clientId;
+
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return 0;
+                    }
+                }
+
+            }
+
+
+
+
         }
     }
 }

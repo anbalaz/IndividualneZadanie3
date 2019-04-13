@@ -27,7 +27,7 @@ namespace BankSystem
 
         private void SetUpTransactionsGridSet()
         {
-            TransactionsRepositories transactionsRepositories = new TransactionsRepositories();
+            TransactionsRepository transactionsRepositories = new TransactionsRepository();
             AllTransactionsDtGrdVw.DataSource = transactionsRepositories.GetAllTransactions();
             AllTransactionsDtGrdVw.DataMember = "Transactions";
         }

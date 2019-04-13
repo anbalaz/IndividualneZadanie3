@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankManager.cs" />
     <Compile Include="frmClientManagement.cs">
       <SubType>Form</SubType>
     </Compile>

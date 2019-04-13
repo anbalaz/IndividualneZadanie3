@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Data.Repositories
 {
-    public class TransactionsRepositories
+    public class TransactionsRepository : ITransactionsRepository
     {
         public DataSet GetAllTransactions()
         {

@@ -17,6 +17,7 @@ namespace TransformerBank
         {
             ITownRepository townRepository = new TownRepository();
             townRepository.GeListData();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());

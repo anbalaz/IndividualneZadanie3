@@ -16,7 +16,9 @@ namespace Data.Repositories
                 connection.Open();
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM Town";
+                    command.CommandText = @"SELECT c.*,t.Id,t.Name FROM TOWN as t
+                                            INNER JOIN country AS c ON t.CountryId = c.Id
+                                            WHERE CountryId = c.Id; ";
                     try
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -24,9 +26,15 @@ namespace Data.Repositories
                             {
                                 while (reader.Read())
                                 {
+                                    Country country = new Country();
+                                    country.Id= reader.GetInt32(0);
+                                    country.Name= reader.GetString(1);
+
+
                                     Town town = new Town();
-                                    town.Id = reader.GetInt32(0);
-                                    town.Name = reader.GetString(1);
+                                    town.Country = country;
+                                    town.Id = reader.GetInt32(2);
+                                    town.Name = reader.GetString(3);
 
                                     towns.Add(town);
                                 }

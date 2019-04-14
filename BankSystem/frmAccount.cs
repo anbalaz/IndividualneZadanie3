@@ -62,7 +62,6 @@ namespace BankSystem
             {
                 MessageBox.Show("Please check if you selected all values");
             }
-           
         }
 
         private void InitializeCombobox()

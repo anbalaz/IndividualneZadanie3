@@ -12,6 +12,8 @@ namespace BankSystem
 {
     public partial class frmAccounts : Form
     {
+        BankManager _bankManager = new BankManager();
+
         public frmAccounts()
         {
             InitializeComponent();
@@ -23,6 +25,14 @@ namespace BankSystem
             {
                 newForm.ShowDialog();
             }
+        }
+
+        private void cmdFindClient_Click(object sender, EventArgs e)
+        {
+            DataSet clients = _bankManager.GetSearchedClients(searchStringTxtBx.Text);
+
+            searchedClientsDtGrdVw.DataSource = clients;
+            searchedClientsDtGrdVw.DataMember = "Clients";
         }
     }
 }

@@ -2,6 +2,7 @@
 using Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace BankSystem
 {
@@ -53,6 +54,16 @@ namespace BankSystem
         public List<Town> GetListOfTowns()
         {
             return _townRepository.GeListData();
+        }
+
+        public DataSet GetSearchedClients(string searchString)
+        {
+            return _clientRepository.GetClientSearch(searchString);
+        }
+
+        public Client GetClientById(string identityCardNumber)
+        {
+            return _clientRepository.GetClientById(identityCardNumber);
         }
     }
 }

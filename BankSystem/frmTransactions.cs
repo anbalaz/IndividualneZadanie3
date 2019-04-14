@@ -32,9 +32,9 @@ namespace BankSystem
             AllTransactionsDtGrdVw.DataMember = "Transactions";
         }
 
-        private void SetUpTransactionsByIdGridSet(string identityCard)
+        private void SetUpTransactionsByIdGridSet(int clientId)
         {
-            AllTransactionsDtGrdVw.DataSource = _bankManager.GetTransactionsByClientId(identityCard);
+            AllTransactionsDtGrdVw.DataSource = _bankManager.GetTransactionsByClientId(clientId);
             AllTransactionsDtGrdVw.DataMember = "Transactions";
         }
 
@@ -42,7 +42,7 @@ namespace BankSystem
         /// Used when viewing selected client's transactions.
         /// </summary>
         /// <param name="clientId"></param>
-        public frmTransactions(string clientId)
+        public frmTransactions(int clientId)
         {
             InitializeComponent();
             SetUpTransactionsByIdGridSet(clientId);

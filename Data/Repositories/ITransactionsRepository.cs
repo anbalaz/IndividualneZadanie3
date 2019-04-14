@@ -12,7 +12,7 @@ namespace Data.Repositories
     {
         DataSet GetAllTransactions();
 
-        DataSet GetTransactionsByClientId(string identityCard);
+        DataSet GetTransactionsByClientId(int clientId);
 
     }
 }

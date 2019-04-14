@@ -15,7 +15,7 @@ namespace Data.Repositories
                                                         cc.IsCardBlocked, 
                                                         cc.PasswordCard FROM CreditCard as cc
                                                     INNER JOIN (BankAccount AS ba INNER JOIN Client as c ON ba.ClientId= c.Id)ON cc.BankAccountId= ba.Id
-                                                     WHERE IdentityCard = @clientId;";
+                                                     WHERE c.Id = @id;";
         public List<CreditCard> GeListData()
         {
             List<CreditCard> creditCards = new List<CreditCard>();
@@ -52,7 +52,7 @@ namespace Data.Repositories
             }
         }
 
-        public List<CreditCard> GetCreditCardListByClientId(string identityCard)
+        public List<CreditCard> GetCreditCardListByClientId(int clientId)
         {
             List<CreditCard> creditCards = new List<CreditCard>();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -61,7 +61,7 @@ namespace Data.Repositories
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = _getCreditCardListByClientId;
-                    command.Parameters.Add("@clientId", SqlDbType.VarChar).Value = identityCard;
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
                     try
                     {
                         using (SqlDataReader reader = command.ExecuteReader())

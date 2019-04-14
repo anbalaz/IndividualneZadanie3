@@ -21,7 +21,7 @@ namespace BankSystem
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
            
-            if (!_bankManager.ClientId(txtBxSearchIdentity.Text).Equals(string.Empty))
+            if (_bankManager.ClientId(txtBxSearchIdentity.Text)!=0)
             {
                 using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxSearchIdentity.Text)))
                 {

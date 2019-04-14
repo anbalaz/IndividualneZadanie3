@@ -18,7 +18,7 @@ namespace BankSystem
         /// Used when viewing/updating existing client.
         /// </summary>
         /// <param name="clientId"></param>
-        public frmClientManagement(string clientId)
+        public frmClientManagement(int clientId)
         {
             InitializeComponent();
             _client = _bankManager.GetClientById(clientId);
@@ -30,7 +30,7 @@ namespace BankSystem
 
         private void cmdUpdate_Click(object sender, EventArgs e)
         {
-            using (frmAccount newForm = new frmAccount(42))
+            using (frmAccount newForm = new frmAccount(_client.Id))
             {
                 newForm.ShowDialog();
             }
@@ -54,7 +54,7 @@ namespace BankSystem
 
         private void cmdAllTransactions_Click(object sender, EventArgs e)
         {
-            using (frmTransactions newForm = new frmTransactions(_client.IdentityCard))
+            using (frmTransactions newForm = new frmTransactions(_client.Id))
             {
                 newForm.ShowDialog();
             }
@@ -72,11 +72,12 @@ namespace BankSystem
         {
             if (MessageBox.Show("Hodor?", "Hodor!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
                 DialogResult = DialogResult.OK;
             }
         }
 
-        private void InitializeClientInfo(string clientId)
+        private void InitializeClientInfo(int clientId)
         {
 
             lblIdentity.Text = _client.IdentityCard;
@@ -90,14 +91,15 @@ namespace BankSystem
             lblEmail.Text = _client.Email;
         }
 
-        private void InitializeBankAccountInfo(string clientId)
+        private void InitializeBankAccountInfo(int clientId)
         {
 
             lblIBAN.Text = _bankAccount.IBAN.ToString();
             lblCreationDate.Text = _bankAccount.CreationAccountDate.ToString();
             lblCurrentSum.Text = _bankAccount.CurrentSum.ToString();
             lblLimit.Text = _bankAccount.Limit.ToString();
-            if (_bankAccount.TerminationDate.ToString() != null)
+
+            if (_bankAccount.TerminationDate != DateTime.MinValue)
             {
                 lblTerminationDate.Text = _bankAccount.TerminationDate.ToString();
                 MessageBox.Show("The Account was closed");
@@ -109,7 +111,7 @@ namespace BankSystem
             }
         }
 
-        private void InitializeCreditCardsgrid(string clientId)
+        private void InitializeCreditCardsgrid(int clientId)
 
         {
             dtGrdVwCreditCards.DataSource = _bankManager.GetCreditCardListByClientId(clientId);

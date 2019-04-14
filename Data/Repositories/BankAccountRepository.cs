@@ -8,8 +8,12 @@ namespace Data.Repositories
     public class BankAccountRepository : IBankAccountRepository
     {
 
-        private string _createClient = @"INSERT INTO BankAccount(ClientId,IBAN,CreationAccountDate,Limit)
-                                        VALUES (@clientId,@IBAN,@time,@limit);";
+        private string _createBankAccount = @"INSERT INTO BankAccount(ClientId,IBAN,CreationAccountDate,Limit)
+                                            VALUES (@clientId,@IBAN,@time,@limit);";
+
+        private string _closeBankAccount = @"Update BankAccount 
+                                             SET TerminationDate=GETDATE()
+                                             WHERE ClientId=@id;";
 
         private string _getBankAccountByClientId = @"SELECT 
                                                      ba.Id
@@ -19,7 +23,10 @@ namespace Data.Repositories
                                                     ,CurrentSum
                                                     ,Limit FROM BankAccount as ba
                                                     INNER JOIN Client as c ON ba.ClientId= c.Id
-                                                    WHERE IdentityCard =@clientId;";
+                                                    WHERE c.Id =@id;";
+        private string _updateBankAccount = @"	Update BankAccount 
+                                                SET Limit=@limit
+                                                WHERE ClientId=@id";
 
 
         public int CreateBankAccount(int clientId, string IBAN, decimal limit)
@@ -33,7 +40,7 @@ namespace Data.Repositories
                 {
                     try
                     {
-                        command.CommandText = _createClient;
+                        command.CommandText = _createBankAccount;
                         command.Parameters.Add("@clientId", SqlDbType.Int).Value = clientId;
                         command.Parameters.Add("@IBAN", SqlDbType.VarChar).Value = IBAN;
                         command.Parameters.Add("@time", SqlDbType.Date).Value = time;
@@ -51,7 +58,7 @@ namespace Data.Repositories
             }
         }
 
-        public BankAccount GetBankAccountByClientId(string clientId)
+        public BankAccount GetBankAccountByClientId(int clientId)
         {
             BankAccount bankAccount = new BankAccount();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -60,7 +67,7 @@ namespace Data.Repositories
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = _getBankAccountByClientId;
-                    command.Parameters.Add("@clientId", SqlDbType.VarChar).Value = clientId;
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
                     try
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -75,6 +82,10 @@ namespace Data.Repositories
                                     {
                                         bankAccount.TerminationDate = reader.GetDateTime(3);
                                     }
+                                    else
+                                    {
+                                        bankAccount.TerminationDate = DateTime.MinValue;
+                                    }
                                     bankAccount.CurrentSum = reader.GetDecimal(4);
                                     bankAccount.Limit = reader.GetDecimal(5);
                                 }
@@ -87,6 +98,53 @@ namespace Data.Repositories
                     }
                 }
                 return bankAccount;
+            }
+        }
+
+        public int UpdatebankAccount(int clientId, decimal limit)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = _updateBankAccount;
+                        command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
+                        command.Parameters.Add("@limit", SqlDbType.Decimal).Value = limit;
+
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return 0;
+                    }
+                }
+            }
+        }
+
+        public int CloseBankAccount(int clientId)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = _closeBankAccount;
+                        command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
+
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return 0;
+                    }
+                }
             }
         }
     }

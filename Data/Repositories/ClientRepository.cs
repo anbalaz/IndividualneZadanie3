@@ -13,6 +13,17 @@ namespace Data.Repositories
                                         VALUES (@identityCard,@firstName,@lastName,@town,@street,@streetNumber,@postalCode,@phoneNumber,@email);";
 
         private string _deleteClientById = @"DELETE FROM Client WHERE ID=@clientId;";
+        private string _updateClientById = @"Update Client 
+                                            SET TownId=@townId,
+                                            	IdentityCard=@identityCard,
+                                            	FirstName=@firstName,
+                                            	LastName=@lastName,
+                                            	Street=@street,
+                                            	StreetNumber=@streetNumber,
+                                            	PostalCode=@postalCode,
+                                            	PhoneNumber=@phoneNumber,
+                                            	Email=@email
+                                            	WHERE Id=@id;";
 
         private string _getClientById = @"SELECT t.Id
                                 		,t.Name
@@ -27,7 +38,7 @@ namespace Data.Repositories
                                 		,[Email] FROM  Client as c
                                 INNER JOIN BankAccount AS ba ON c.Id=ba.ClientId
                                 INNER JOIN Town AS t ON c.TownId=t.Id
-                                WHERE IdentityCard LIKE @Identity;";
+                                WHERE c.Id = @id;";
         private string _getClientSearch = @"SELECT c.[Id]
                                                   ,[IdentityCard]
                                             	  ,ba.IBAN
@@ -43,11 +54,11 @@ namespace Data.Repositories
                                             INNER JOIN Town AS t ON c.TownId=t.Id
                                            WHERE (LastName LIKE @searchString) OR (IdentityCard  LIKE @searchString) OR (ba.IBAN LIKE @searchString);";
 
-        private string _getClientId = @"SELECT   c.IdentityCard
+        private string _getClientId = @"SELECT c.Id
                                 		FROM  Client as c
                                         INNER JOIN BankAccount AS ba ON c.Id=ba.ClientId
                                         INNER JOIN Town AS t ON c.TownId=t.Id
-                                        WHERE IdentityCard =@identityCard";
+                                        WHERE c.IdentityCard =@identityCard";
 
         public int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
@@ -106,13 +117,9 @@ namespace Data.Repositories
                 }
 
             }
-
-
-
-
         }
 
-        public Client GetClientById(string identityCard)
+        public Client GetClientById(int clientId)
         {
             Client client = new Client();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -121,7 +128,7 @@ namespace Data.Repositories
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = _getClientById;
-                    command.Parameters.Add("@Identity", SqlDbType.VarChar).Value = identityCard;
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
                     try
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -181,7 +188,7 @@ namespace Data.Repositories
             }
         }
 
-        public string ClientId(string identityCard)
+        public int ClientId(string identityCard)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
@@ -194,7 +201,7 @@ namespace Data.Repositories
                     {
                         if (command.ExecuteScalar() != null)
                         {
-                            return command.ExecuteScalar().ToString();
+                            return Convert.ToInt32(command.ExecuteScalar());
                         }
                     }
                     catch (SqlException ex)
@@ -202,7 +209,39 @@ namespace Data.Repositories
                         Console.WriteLine($"Exception occured: \n{ ex}");
                     }
                 }
-                return string.Empty;
+                return 0;
+            }
+        }
+
+        public int ClientUpdate(int clientId, int townId,string identityCard,string firstName,string lastName,string street,string streetNumber,string postalCode, string phoneNumber, string email)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = _updateClientById;
+                        command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
+                        command.Parameters.Add("@townId", SqlDbType.Int).Value = townId;
+                        command.Parameters.Add("@identityCard", SqlDbType.VarChar).Value = identityCard;
+                        command.Parameters.Add("@firstName", SqlDbType.NVarChar).Value = firstName;
+                        command.Parameters.Add("@lastName", SqlDbType.NVarChar).Value = lastName;
+                        command.Parameters.Add("@street", SqlDbType.NVarChar).Value = street;
+                        command.Parameters.Add("@streetNumber", SqlDbType.NVarChar).Value = streetNumber;
+                        command.Parameters.Add("@postalCode", SqlDbType.VarChar).Value = postalCode;
+                        command.Parameters.Add("@phoneNumber", SqlDbType.VarChar).Value = phoneNumber;
+                        command.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
+
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return 0;
+                    }
+                }
             }
         }
     }

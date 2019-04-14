@@ -6,6 +6,6 @@ namespace Data.Repositories
     public interface ICreditCardRepository
     {
         List<CreditCard> GeListData();
-        List<CreditCard> GetCreditCardListByClientId(string identityCard);
+        List<CreditCard> GetCreditCardListByClientId(int clientId);
     }
 }

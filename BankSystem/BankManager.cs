@@ -53,6 +53,32 @@ namespace BankSystem
             return ret;
         }
 
+        public String UpdateClientAndBankAccount(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email, decimal limit)
+        {
+            string ret;
+            int clientUpdate = _clientRepository.ClientUpdate(clientId, townId, identityCard, firstName, lastName, street, streetNumber, postalCode, phoneNumber, email);
+            int bankUpdate = _bankAccountRepository.UpdatebankAccount(clientId,limit);
+
+            if (clientUpdate > 0 && bankUpdate > 0)
+            {
+                ret = "Client and BankAccount were updated";
+            }
+            else if (clientUpdate == 0 && bankUpdate == 0)
+            {
+                ret = "Client and BankAccount were not updated";
+
+            }
+            else if (clientUpdate > 0)
+            {
+                ret = "Client was updated but BankAccount was not updated";
+            }
+            else
+            {
+                ret = "BankAccount was updated but Client was not updated";
+            }
+            return ret;
+        }
+
         public List<Town> GetListOfTowns()
         {
             return _townRepository.GeListData();
@@ -63,36 +89,50 @@ namespace BankSystem
             return _clientRepository.GetClientSearch(searchString);
         }
 
-        public Client GetClientById(string identityCardNumber)
+        public Client GetClientById(int clientId)
         {
-            return _clientRepository.GetClientById(identityCardNumber);
+            return _clientRepository.GetClientById(clientId);
         }
 
-        public string ClientId(string identityCard)
+        public int ClientId(string identityCard)
         {
             return _clientRepository.ClientId(identityCard);
 
         }
 
-        public BankAccount GetBankAccountByClientId(string identityCard)
+        public BankAccount GetBankAccountByClientId(int clientId)
         {
-            return _bankAccountRepository.GetBankAccountByClientId(identityCard);
+            return _bankAccountRepository.GetBankAccountByClientId(clientId);
 
         }
 
-        public List<CreditCard> GetCreditCardListByClientId(string identityCard)
+        public List<CreditCard> GetCreditCardListByClientId(int clientId)
         {
-            return _creditCardRepository.GetCreditCardListByClientId(identityCard);
+            return _creditCardRepository.GetCreditCardListByClientId(clientId);
         }
 
-        public DataSet GetTransactionsByClientId(string identityCard)
+        public DataSet GetTransactionsByClientId(int clientId)
         {
-            return _transactionsRepository.GetTransactionsByClientId(identityCard);
+            return _transactionsRepository.GetTransactionsByClientId(clientId);
         }
 
         public DataSet GetAllTransactions()
         {
             return _transactionsRepository.GetAllTransactions();
+        }
+
+        public String CloseBankAccount(int clientId)
+        {
+            string ret;
+            if (_bankAccountRepository.CloseBankAccount(clientId) > 0)
+            {
+                ret = "Account has been terminated";
+            }
+            else
+            {
+                ret = "Cant close account";
+            }
+            return ret;
         }
     }
 }

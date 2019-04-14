@@ -79,5 +79,10 @@ namespace BankSystem
         {
             Close();
         }
+
+        private void bttnUpdateClient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

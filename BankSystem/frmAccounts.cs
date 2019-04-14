@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
@@ -21,10 +15,17 @@ namespace BankSystem
 
         private void cmdManageAccount_Click(object sender, EventArgs e)
         {
-            //using (frmClientManagement newForm = new frmClientManagement())
-            //{
-            //    newForm.ShowDialog();
-            //}
+            if (!_bankManager.ClientId(txtBxIdentity.Text).Equals(string.Empty))
+            {
+                using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxIdentity.Text)))
+                {
+                    newForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("There are no clients with searched Identity Card number");
+            }
         }
 
         private void cmdFindClient_Click(object sender, EventArgs e)

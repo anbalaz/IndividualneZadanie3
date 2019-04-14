@@ -315,6 +315,7 @@
             this.bttnUpdateClient.TabIndex = 37;
             this.bttnUpdateClient.Text = "Update";
             this.bttnUpdateClient.UseVisualStyleBackColor = true;
+            this.bttnUpdateClient.Click += new System.EventHandler(this.bttnUpdateClient_Click);
             // 
             // frmAccount
             // 

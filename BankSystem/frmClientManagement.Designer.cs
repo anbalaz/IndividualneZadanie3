@@ -34,7 +34,6 @@
             this.cmdAllTransactions = new System.Windows.Forms.Button();
             this.cmdWithdrawal = new System.Windows.Forms.Button();
             this.cmdDeposit = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,20 +63,23 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.lblIBAN = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
+            this.lblCreationDate = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
+            this.lblLimit = new System.Windows.Forms.Label();
+            this.lblTerminationDate = new System.Windows.Forms.Label();
+            this.lblCurrentSum = new System.Windows.Forms.Label();
+            this.dtGrdVwCreditCards = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwCreditCards)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdUpdate
             // 
-            this.cmdUpdate.Location = new System.Drawing.Point(10, 187);
+            this.cmdUpdate.Location = new System.Drawing.Point(15, 330);
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(112, 23);
             this.cmdUpdate.TabIndex = 4;
@@ -87,7 +89,7 @@
             // 
             // cmdNewTransaction
             // 
-            this.cmdNewTransaction.Location = new System.Drawing.Point(392, 256);
+            this.cmdNewTransaction.Location = new System.Drawing.Point(397, 399);
             this.cmdNewTransaction.Name = "cmdNewTransaction";
             this.cmdNewTransaction.Size = new System.Drawing.Size(112, 23);
             this.cmdNewTransaction.TabIndex = 5;
@@ -97,7 +99,7 @@
             // 
             // cmdCloseAccount
             // 
-            this.cmdCloseAccount.Location = new System.Drawing.Point(392, 344);
+            this.cmdCloseAccount.Location = new System.Drawing.Point(397, 487);
             this.cmdCloseAccount.Name = "cmdCloseAccount";
             this.cmdCloseAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdCloseAccount.TabIndex = 6;
@@ -107,7 +109,7 @@
             // 
             // cmdAllTransactions
             // 
-            this.cmdAllTransactions.Location = new System.Drawing.Point(392, 185);
+            this.cmdAllTransactions.Location = new System.Drawing.Point(397, 328);
             this.cmdAllTransactions.Name = "cmdAllTransactions";
             this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 8;
@@ -117,7 +119,7 @@
             // 
             // cmdWithdrawal
             // 
-            this.cmdWithdrawal.Location = new System.Drawing.Point(12, 344);
+            this.cmdWithdrawal.Location = new System.Drawing.Point(17, 487);
             this.cmdWithdrawal.Name = "cmdWithdrawal";
             this.cmdWithdrawal.Size = new System.Drawing.Size(112, 23);
             this.cmdWithdrawal.TabIndex = 9;
@@ -127,7 +129,7 @@
             // 
             // cmdDeposit
             // 
-            this.cmdDeposit.Location = new System.Drawing.Point(12, 256);
+            this.cmdDeposit.Location = new System.Drawing.Point(17, 399);
             this.cmdDeposit.Name = "cmdDeposit";
             this.cmdDeposit.Size = new System.Drawing.Size(112, 23);
             this.cmdDeposit.TabIndex = 10;
@@ -135,23 +137,11 @@
             this.cmdDeposit.UseVisualStyleBackColor = true;
             this.cmdDeposit.Click += new System.EventHandler(this.cmdDeposit_Click);
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.DarkMagenta;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(749, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 389);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Niekde v tomto okne bude grid s platobnými kartami priradenými k účtu.";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.MediumPurple;
-            this.label3.Location = new System.Drawing.Point(128, 163);
+            this.label3.Location = new System.Drawing.Point(133, 306);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(233, 60);
             this.label3.TabIndex = 12;
@@ -162,7 +152,7 @@
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label4.Location = new System.Drawing.Point(510, 337);
+            this.label4.Location = new System.Drawing.Point(515, 480);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(233, 60);
             this.label4.TabIndex = 13;
@@ -173,7 +163,7 @@
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.Olive;
-            this.label5.Location = new System.Drawing.Point(128, 249);
+            this.label5.Location = new System.Drawing.Point(133, 392);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(233, 60);
             this.label5.TabIndex = 14;
@@ -184,7 +174,7 @@
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label6.Location = new System.Drawing.Point(130, 337);
+            this.label6.Location = new System.Drawing.Point(135, 480);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(233, 60);
             this.label6.TabIndex = 15;
@@ -195,7 +185,7 @@
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label7.Location = new System.Drawing.Point(510, 163);
+            this.label7.Location = new System.Drawing.Point(515, 306);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(233, 60);
             this.label7.TabIndex = 16;
@@ -206,7 +196,7 @@
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(510, 249);
+            this.label8.Location = new System.Drawing.Point(515, 392);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(233, 60);
             this.label8.TabIndex = 17;
@@ -407,13 +397,13 @@
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.lblIBAN);
             this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.lblCreationDate);
             this.groupBox2.Controls.Add(this.label30);
-            this.groupBox2.Controls.Add(this.label31);
-            this.groupBox2.Controls.Add(this.label33);
-            this.groupBox2.Controls.Add(this.label35);
+            this.groupBox2.Controls.Add(this.lblLimit);
+            this.groupBox2.Controls.Add(this.lblTerminationDate);
+            this.groupBox2.Controls.Add(this.lblCurrentSum);
             this.groupBox2.Location = new System.Drawing.Point(12, 87);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(728, 73);
@@ -448,14 +438,14 @@
             this.label24.TabIndex = 20;
             this.label24.Text = "LIMIT";
             // 
-            // label25
+            // lblIBAN
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 48);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(90, 13);
-            this.label25.TabIndex = 29;
-            this.label25.Text = "IDENTITY CARD";
+            this.lblIBAN.AutoSize = true;
+            this.lblIBAN.Location = new System.Drawing.Point(6, 48);
+            this.lblIBAN.Name = "lblIBAN";
+            this.lblIBAN.Size = new System.Drawing.Size(32, 13);
+            this.lblIBAN.TabIndex = 29;
+            this.lblIBAN.Text = "IBAN";
             // 
             // label26
             // 
@@ -466,14 +456,14 @@
             this.label26.TabIndex = 13;
             this.label26.Text = "CREATION ACCOUNT DATE";
             // 
-            // label29
+            // lblCreationDate
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(205, 48);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(72, 13);
-            this.label29.TabIndex = 28;
-            this.label29.Text = "FIRST NAME";
+            this.lblCreationDate.AutoSize = true;
+            this.lblCreationDate.Location = new System.Drawing.Point(205, 48);
+            this.lblCreationDate.Name = "lblCreationDate";
+            this.lblCreationDate.Size = new System.Drawing.Size(94, 13);
+            this.lblCreationDate.TabIndex = 28;
+            this.lblCreationDate.Text = "CREATION DATE";
             // 
             // label30
             // 
@@ -484,38 +474,57 @@
             this.label30.TabIndex = 14;
             this.label30.Text = "IBAN";
             // 
-            // label31
+            // lblLimit
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(617, 48);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(50, 13);
-            this.label31.TabIndex = 32;
-            this.label31.Text = "STREET";
+            this.lblLimit.AutoSize = true;
+            this.lblLimit.Location = new System.Drawing.Point(617, 48);
+            this.lblLimit.Name = "lblLimit";
+            this.lblLimit.Size = new System.Drawing.Size(35, 13);
+            this.lblLimit.TabIndex = 32;
+            this.lblLimit.Text = "LIMIT";
             // 
-            // label33
+            // lblTerminationDate
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(360, 48);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(68, 13);
-            this.label33.TabIndex = 30;
-            this.label33.Text = "LAST NAME";
+            this.lblTerminationDate.AutoSize = true;
+            this.lblTerminationDate.Location = new System.Drawing.Point(360, 48);
+            this.lblTerminationDate.Name = "lblTerminationDate";
+            this.lblTerminationDate.Size = new System.Drawing.Size(114, 13);
+            this.lblTerminationDate.TabIndex = 30;
+            this.lblTerminationDate.Text = "TERMINATION DATE";
             // 
-            // label35
+            // lblCurrentSum
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(499, 48);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(41, 13);
-            this.label35.TabIndex = 31;
-            this.label35.Text = "TOWN";
+            this.lblCurrentSum.AutoSize = true;
+            this.lblCurrentSum.Location = new System.Drawing.Point(489, 48);
+            this.lblCurrentSum.Name = "lblCurrentSum";
+            this.lblCurrentSum.Size = new System.Drawing.Size(87, 13);
+            this.lblCurrentSum.TabIndex = 31;
+            this.lblCurrentSum.Text = "CURRENT SUM";
+            // 
+            // dtGrdVwCreditCards
+            // 
+            this.dtGrdVwCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdVwCreditCards.Location = new System.Drawing.Point(12, 194);
+            this.dtGrdVwCreditCards.Name = "dtGrdVwCreditCards";
+            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(728, 99);
+            this.dtGrdVwCreditCards.TabIndex = 39;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 178);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "CREDIT CARDS";
             // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 410);
+            this.ClientSize = new System.Drawing.Size(1017, 579);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtGrdVwCreditCards);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label8);
@@ -524,7 +533,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.cmdDeposit);
             this.Controls.Add(this.cmdWithdrawal);
             this.Controls.Add(this.cmdAllTransactions);
@@ -538,7 +546,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwCreditCards)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -549,7 +559,6 @@
         private System.Windows.Forms.Button cmdAllTransactions;
         private System.Windows.Forms.Button cmdWithdrawal;
         private System.Windows.Forms.Button cmdDeposit;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -579,12 +588,14 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label lblIBAN;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label lblCreationDate;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label lblLimit;
+        private System.Windows.Forms.Label lblTerminationDate;
+        private System.Windows.Forms.Label lblCurrentSum;
+        private System.Windows.Forms.DataGridView dtGrdVwCreditCards;
+        private System.Windows.Forms.Label label1;
     }
 }

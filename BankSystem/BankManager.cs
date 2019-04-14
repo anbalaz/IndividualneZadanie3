@@ -10,7 +10,8 @@ namespace BankSystem
     {
         private IBankAccountRepository _bankAccountRepository = new BankAccountRepository();
         private IClientRepository _clientRepository = new ClientRepository();
-        ITownRepository _townRepository = new TownRepository();
+        private ITownRepository _townRepository = new TownRepository();
+        private ICreditCardRepository _creditCardRepository = new CreditCardRepository();
 
         public String CreateClientAndBankAccount(string identityCard,
                                                 string firstName,
@@ -71,5 +72,17 @@ namespace BankSystem
             return _clientRepository.ClientId(identityCard);
 
         }
+
+        public BankAccount GetBankAccountByClientId(string identityCard)
+        {
+            return _bankAccountRepository.GetBankAccountByClientId(identityCard);
+
+        }
+
+        public List<CreditCard> GetCreditCardListByClientId(string identityCard)
+        {
+            return _creditCardRepository.GetCreditCardListByClientId(identityCard);
+        }
+
     }
 }

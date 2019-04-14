@@ -1,12 +1,5 @@
 ﻿using Data.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
@@ -15,6 +8,7 @@ namespace BankSystem
     {
         private BankManager _bankManager = new BankManager();
         private Client _client;
+        private BankAccount _bankAccount;
         /// <summary>
         /// Backup, do not really use :)
         /// </summary>
@@ -28,9 +22,10 @@ namespace BankSystem
         {
             InitializeComponent();
             _client = _bankManager.GetClientById(clientId);
-            InitializeClientGrid(clientId);
-
-
+            _bankAccount = _bankManager.GetBankAccountByClientId(clientId);
+            InitializeClientInfo(clientId);
+            InitializeBankAccountInfo(clientId);
+            InitializeCreditCardsgrid(clientId);
 
 
 
@@ -85,18 +80,44 @@ namespace BankSystem
             }
         }
 
-        private void InitializeClientGrid(string clientId)
+        private void InitializeClientInfo(string clientId)
         {
-            
-           lblIdentity.Text= _client.IdentityCard;
-           lblFirstName.Text= _client.FirstName;
-           lblLastName.Text= _client.LastName;
-           lblTown.Text= _client.Town.Name;
-           lblStreet.Text= _client.Street;
-           lblStreetNumber.Text= _client.StreetNumber;
-           lblPostalCode.Text= _client.PostalCode;
-           lblPhoneNumber.Text= _client.PhoneNumber;
-           lblEmail.Text= _client.Email;
+
+            lblIdentity.Text = _client.IdentityCard;
+            lblFirstName.Text = _client.FirstName;
+            lblLastName.Text = _client.LastName;
+            lblTown.Text = _client.Town.Name;
+            lblStreet.Text = _client.Street;
+            lblStreetNumber.Text = _client.StreetNumber;
+            lblPostalCode.Text = _client.PostalCode;
+            lblPhoneNumber.Text = _client.PhoneNumber;
+            lblEmail.Text = _client.Email;
+        }
+
+        private void InitializeBankAccountInfo(string clientId)
+        {
+
+            lblIBAN.Text = _bankAccount.IBAN.ToString();
+            lblCreationDate.Text = _bankAccount.CreationAccountDate.ToString();
+            lblCurrentSum.Text = _bankAccount.CurrentSum.ToString();
+            lblLimit.Text = _bankAccount.Limit.ToString();
+            if (_bankAccount.TerminationDate.ToString() != null)
+            {
+                lblTerminationDate.Text = _bankAccount.TerminationDate.ToString();
+                MessageBox.Show("The Account was closed");
+                cmdWithdrawal.Enabled = false;
+                cmdDeposit.Enabled = false;
+                cmdUpdate.Enabled = false;
+                cmdNewTransaction.Enabled = false;
+                cmdCloseAccount.Enabled = false;
+            }
+        }
+
+        private void InitializeCreditCardsgrid(string clientId)
+
+        {
+            dtGrdVwCreditCards.DataSource = _bankManager.GetCreditCardListByClientId(clientId);
+
         }
     }
 }

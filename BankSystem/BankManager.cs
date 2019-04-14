@@ -65,5 +65,11 @@ namespace BankSystem
         {
             return _clientRepository.GetClientById(identityCardNumber);
         }
+
+        public string ClientId(string identityCard)
+        {
+            return _clientRepository.ClientId(identityCard);
+
+        }
     }
 }

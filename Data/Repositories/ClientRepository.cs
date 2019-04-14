@@ -43,6 +43,12 @@ namespace Data.Repositories
                                             INNER JOIN Town AS t ON c.TownId=t.Id
                                            WHERE (LastName LIKE @searchString) OR (IdentityCard  LIKE @searchString) OR (ba.IBAN LIKE @searchString);";
 
+        private string _getClientId = @"SELECT   c.IdentityCard
+                                		FROM  Client as c
+                                        INNER JOIN BankAccount AS ba ON c.Id=ba.ClientId
+                                        INNER JOIN Town AS t ON c.TownId=t.Id
+                                        WHERE IdentityCard =@identityCard";
+
         public int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -136,7 +142,6 @@ namespace Data.Repositories
                                     client.PostalCode = reader.GetString(8);
                                     client.PhoneNumber = reader.GetString(9);
                                     client.Email = reader.GetString(10);
-
                                 }
                             }
                         }
@@ -173,6 +178,31 @@ namespace Data.Repositories
             {
                 Console.WriteLine($"Exception occured: \n{ ex}");
                 return ds;
+            }
+        }
+
+        public string ClientId(string identityCard)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _getClientId;
+                    command.Parameters.Add("@identityCard", SqlDbType.VarChar).Value = identityCard;
+                    try
+                    {
+                        if (command.ExecuteScalar() != null)
+                        {
+                            return command.ExecuteScalar().ToString();
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return string.Empty;
             }
         }
     }

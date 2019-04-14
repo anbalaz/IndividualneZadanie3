@@ -21,6 +21,8 @@ namespace BankSystem
         {
             InitializeComponent();
             InitializeCombobox();
+            bttnUpdateClient.Visible = false;
+            //iBANtxtBx.Text=;
         }
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace BankSystem
         public frmAccount(int clientId)
         {
             InitializeComponent();
+            bttnCreateClient.Visible = false;
         }
 
         private void createClientBttn_Click(object sender, EventArgs e)

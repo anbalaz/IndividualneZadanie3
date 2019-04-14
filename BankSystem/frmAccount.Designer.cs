@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.iBANtxtBx = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,27 +46,19 @@
             this.emailTxtBx = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.townCmbBx = new System.Windows.Forms.ComboBox();
-            this.createClientBttn = new System.Windows.Forms.Button();
+            this.bttnCreateClient = new System.Windows.Forms.Button();
             this.CancelBttn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.streetNumberTxtBx = new System.Windows.Forms.TextBox();
             this.postalCodeNmrcTxtBx = new Controls.NumericTextBox();
             this.phoneNumberNmrcTxtBx = new Controls.NumericTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.limitUpDwn = new System.Windows.Forms.NumericUpDown();
-            this.streetNumberTxtBx = new System.Windows.Forms.TextBox();
+            this.bttnUpdateClient = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.limitUpDwn)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "CREATE BANK ACCOUNT";
             // 
             // iBANtxtBx
             // 
@@ -218,19 +209,19 @@
             this.townCmbBx.Size = new System.Drawing.Size(121, 21);
             this.townCmbBx.TabIndex = 29;
             // 
-            // createClientBttn
+            // bttnCreateClient
             // 
-            this.createClientBttn.Location = new System.Drawing.Point(532, 302);
-            this.createClientBttn.Name = "createClientBttn";
-            this.createClientBttn.Size = new System.Drawing.Size(75, 23);
-            this.createClientBttn.TabIndex = 30;
-            this.createClientBttn.Text = "Commit";
-            this.createClientBttn.UseVisualStyleBackColor = true;
-            this.createClientBttn.Click += new System.EventHandler(this.createClientBttn_Click);
+            this.bttnCreateClient.Location = new System.Drawing.Point(544, 302);
+            this.bttnCreateClient.Name = "bttnCreateClient";
+            this.bttnCreateClient.Size = new System.Drawing.Size(75, 23);
+            this.bttnCreateClient.TabIndex = 30;
+            this.bttnCreateClient.Text = "Create";
+            this.bttnCreateClient.UseVisualStyleBackColor = true;
+            this.bttnCreateClient.Click += new System.EventHandler(this.createClientBttn_Click);
             // 
             // CancelBttn
             // 
-            this.CancelBttn.Location = new System.Drawing.Point(443, 302);
+            this.CancelBttn.Location = new System.Drawing.Point(344, 302);
             this.CancelBttn.Name = "CancelBttn";
             this.CancelBttn.Size = new System.Drawing.Size(75, 23);
             this.CancelBttn.TabIndex = 31;
@@ -263,7 +254,14 @@
             this.groupBox1.Size = new System.Drawing.Size(286, 298);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ADD NEW USER";
+            this.groupBox1.Text = "CLIENT";
+            // 
+            // streetNumberTxtBx
+            // 
+            this.streetNumberTxtBx.Location = new System.Drawing.Point(157, 206);
+            this.streetNumberTxtBx.Name = "streetNumberTxtBx";
+            this.streetNumberTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.streetNumberTxtBx.TabIndex = 35;
             // 
             // postalCodeNmrcTxtBx
             // 
@@ -281,7 +279,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.iBANtxtBx);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
@@ -290,7 +287,7 @@
             this.groupBox2.Size = new System.Drawing.Size(244, 170);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "CREATE BANK ACCOUNT";
+            this.groupBox2.Text = "BANK ACCOUNT ";
             // 
             // limitUpDwn
             // 
@@ -310,26 +307,29 @@
             this.limitUpDwn.Size = new System.Drawing.Size(120, 20);
             this.limitUpDwn.TabIndex = 36;
             // 
-            // streetNumberTxtBx
+            // bttnUpdateClient
             // 
-            this.streetNumberTxtBx.Location = new System.Drawing.Point(157, 206);
-            this.streetNumberTxtBx.Name = "streetNumberTxtBx";
-            this.streetNumberTxtBx.Size = new System.Drawing.Size(100, 20);
-            this.streetNumberTxtBx.TabIndex = 35;
+            this.bttnUpdateClient.Location = new System.Drawing.Point(544, 302);
+            this.bttnUpdateClient.Name = "bttnUpdateClient";
+            this.bttnUpdateClient.Size = new System.Drawing.Size(75, 23);
+            this.bttnUpdateClient.TabIndex = 37;
+            this.bttnUpdateClient.Text = "Update";
+            this.bttnUpdateClient.UseVisualStyleBackColor = true;
             // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 353);
+            this.Controls.Add(this.bttnUpdateClient);
             this.Controls.Add(this.limitUpDwn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CancelBttn);
-            this.Controls.Add(this.createClientBttn);
+            this.Controls.Add(this.bttnCreateClient);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmAccount";
+            this.Text = "4";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -340,7 +340,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox iBANtxtBx;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -359,7 +358,7 @@
         private System.Windows.Forms.TextBox emailTxtBx;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox townCmbBx;
-        private System.Windows.Forms.Button createClientBttn;
+        private System.Windows.Forms.Button bttnCreateClient;
         private System.Windows.Forms.Button CancelBttn;
         private System.Windows.Forms.GroupBox groupBox1;
         private Controls.NumericTextBox postalCodeNmrcTxtBx;
@@ -367,5 +366,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown limitUpDwn;
         private System.Windows.Forms.TextBox streetNumberTxtBx;
+        private System.Windows.Forms.Button bttnUpdateClient;
     }
 }

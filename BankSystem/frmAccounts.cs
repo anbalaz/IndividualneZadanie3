@@ -21,10 +21,10 @@ namespace BankSystem
 
         private void cmdManageAccount_Click(object sender, EventArgs e)
         {
-            using (frmClientManagement newForm = new frmClientManagement())
-            {
-                newForm.ShowDialog();
-            }
+            //using (frmClientManagement newForm = new frmClientManagement())
+            //{
+            //    newForm.ShowDialog();
+            //}
         }
 
         private void cmdFindClient_Click(object sender, EventArgs e)

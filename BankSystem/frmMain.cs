@@ -12,6 +12,7 @@ namespace BankSystem
 {
     public partial class frmMain : Form
     {
+        BankManager _bankManager = new BankManager();
         public frmMain()
         {
             InitializeComponent();
@@ -19,9 +20,17 @@ namespace BankSystem
 
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
-            using (frmClientManagement newForm = new frmClientManagement())
+           
+            if (!_bankManager.ClientId(txtBxSearchIdentity.Text).Equals(string.Empty))
             {
-                newForm.ShowDialog();
+                using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxSearchIdentity.Text)))
+                {
+                    newForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("There are no clients with searched Identity Card number");
             }
         }
 

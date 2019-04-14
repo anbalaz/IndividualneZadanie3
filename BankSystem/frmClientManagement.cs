@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,19 +13,28 @@ namespace BankSystem
 {
     public partial class frmClientManagement : Form
     {
-
+        private BankManager _bankManager = new BankManager();
+        private Client _client;
         /// <summary>
         /// Backup, do not really use :)
         /// </summary>
-        public frmClientManagement() : this(0) { }
+        //public frmClientManagement() : this(0) { }
 
         /// <summary>
         /// Used when viewing/updating existing client.
         /// </summary>
         /// <param name="clientId"></param>
-        public frmClientManagement(int clientId)
+        public frmClientManagement(string clientId)
         {
             InitializeComponent();
+            _client = _bankManager.GetClientById(clientId);
+            InitializeClientGrid(clientId);
+
+
+
+
+
+
         }
 
         private void cmdUpdate_Click(object sender, EventArgs e)
@@ -73,6 +83,20 @@ namespace BankSystem
             {
                 DialogResult = DialogResult.OK;
             }
+        }
+
+        private void InitializeClientGrid(string clientId)
+        {
+            
+           lblIdentity.Text= _client.IdentityCard;
+           lblFirstName.Text= _client.FirstName;
+           lblLastName.Text= _client.LastName;
+           lblTown.Text= _client.Town.Name;
+           lblStreet.Text= _client.Street;
+           lblStreetNumber.Text= _client.StreetNumber;
+           lblPostalCode.Text= _client.PostalCode;
+           lblPhoneNumber.Text= _client.PhoneNumber;
+           lblEmail.Text= _client.Email;
         }
     }
 }

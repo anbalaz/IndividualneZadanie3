@@ -9,5 +9,6 @@ namespace Data.Repositories
         int DeleteClient(int clientId);
         Client GetClientById(string identityCard);
         DataSet GetClientSearch(string identityCard);
+        string ClientId(string identityCard);
     }
 }

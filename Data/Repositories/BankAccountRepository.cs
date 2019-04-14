@@ -24,9 +24,22 @@ namespace Data.Repositories
                                                     ,Limit FROM BankAccount as ba
                                                     INNER JOIN Client as c ON ba.ClientId= c.Id
                                                     WHERE c.Id =@id;";
+
         private string _updateBankAccount = @"	Update BankAccount 
                                                 SET Limit=@limit
                                                 WHERE ClientId=@id";
+
+        private string _updatebankAccountFrom = @"Update BankAccount
+                                                  SET CurrentSum=CurrentSum-@sum
+                                                  WHERE ID=(SELECT BankAccountIdFrom
+                                                  			FROM Transactions
+                                                  			WHERE Id=@transactionId);";
+
+        private string _updatebankAccountTo = @"Update BankAccount
+                                                  SET CurrentSum=CurrentSum+@sum
+                                                  WHERE ID=(SELECT BankAccountIdTo
+                                                  			FROM Transactions
+                                                  			WHERE Id=@transactionId);";
 
 
         public int CreateBankAccount(int clientId, string IBAN, decimal limit)
@@ -145,6 +158,58 @@ namespace Data.Repositories
                         return 0;
                     }
                 }
+            }
+        }
+
+        public int UpdatebankAccountFrom(int transactionId, decimal sum)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _updatebankAccountFrom;
+                    command.Parameters.Add("@transactionid", SqlDbType.Int).Value = transactionId;
+                    command.Parameters.Add("@sum", SqlDbType.Decimal).Value = sum;
+                    try
+                    {
+                        if (command.ExecuteScalar() != null)
+                        {
+                            return Convert.ToInt32(command.ExecuteScalar());
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return 0;
+            }
+        }
+
+        public int UpdatebankAccountTo(int transactionId, decimal sum)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _updatebankAccountTo;
+                    command.Parameters.Add("@transactionid", SqlDbType.Int).Value = transactionId;
+                    command.Parameters.Add("@sum", SqlDbType.Decimal).Value = sum;
+                    try
+                    {
+                        if (command.ExecuteScalar() != null)
+                        {
+                            return Convert.ToInt32(command.ExecuteScalar());
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return 0;
             }
         }
     }

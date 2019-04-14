@@ -367,6 +367,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.lblStreetNumber);
             this.groupBox1.Controls.Add(this.label18);
@@ -387,13 +389,15 @@
             this.groupBox1.Controls.Add(this.lblTown);
             this.groupBox1.Location = new System.Drawing.Point(15, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(728, 73);
+            this.groupBox1.Size = new System.Drawing.Size(773, 73);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CLIENT";
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label24);
@@ -406,7 +410,7 @@
             this.groupBox2.Controls.Add(this.lblCurrentSum);
             this.groupBox2.Location = new System.Drawing.Point(12, 87);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(728, 73);
+            this.groupBox2.Size = new System.Drawing.Size(776, 73);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "BANK ACCOUNT";
@@ -503,10 +507,12 @@
             // 
             // dtGrdVwCreditCards
             // 
+            this.dtGrdVwCreditCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGrdVwCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwCreditCards.Location = new System.Drawing.Point(12, 194);
             this.dtGrdVwCreditCards.Name = "dtGrdVwCreditCards";
-            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(728, 99);
+            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(776, 99);
             this.dtGrdVwCreditCards.TabIndex = 39;
             // 
             // label1
@@ -522,7 +528,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 579);
+            this.ClientSize = new System.Drawing.Size(809, 579);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtGrdVwCreditCards);
             this.Controls.Add(this.groupBox2);

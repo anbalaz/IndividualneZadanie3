@@ -8,5 +8,7 @@ namespace Data.Repositories
         BankAccount GetBankAccountByClientId(int clientId);
         int UpdatebankAccount(int clientId, decimal limit);
         int CloseBankAccount(int clientId);
+        int UpdatebankAccountFrom(int transactionId, decimal sum);
+        int UpdatebankAccountTo(int transactionId, decimal sum);
     }
 }

@@ -21,34 +21,51 @@ namespace BankSystem
         public frmClientManagement(int clientId)
         {
             InitializeComponent();
+            RefreshData(clientId);
+        }
+
+        private void RefreshData(int clientId)
+        {
             _client = _bankManager.GetClientById(clientId);
             _bankAccount = _bankManager.GetBankAccountByClientId(clientId);
-            InitializeClientInfo(clientId);
-            InitializeBankAccountInfo(clientId);
+            InitializeClientInfo();
+            InitializeBankAccountInfo();
             InitializeCreditCardsgrid(clientId);
         }
 
         private void cmdUpdate_Click(object sender, EventArgs e)
         {
-            using (frmAccount newForm = new frmAccount(_client.Id))
+            var clientId = _client.Id;
+            using (frmAccount newForm = new frmAccount(clientId))
             {
-                newForm.ShowDialog();
+                if (newForm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshData(clientId);
+                }
             }
         }
 
         private void cmdDeposit_Click(object sender, EventArgs e)
         {
-            using (frmTransaction newForm = new frmTransaction())
+            int clientId = _client.Id;
+            using (frmTransaction newForm = new frmTransaction(1, clientId))
             {
-                newForm.ShowDialog();
+                if (newForm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshData(clientId);
+                }
             }
         }
 
         private void cmdWithdrawal_Click(object sender, EventArgs e)
         {
-            using (frmTransaction newForm = new frmTransaction())
+            int clientId = _client.Id;
+            using (frmTransaction newForm = new frmTransaction(clientId, 1))
             {
-                newForm.ShowDialog();
+                if (newForm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshData(clientId);
+                }
             }
         }
 
@@ -62,7 +79,8 @@ namespace BankSystem
 
         private void cmdNewTransaction_Click(object sender, EventArgs e)
         {
-            using (frmTransaction newForm = new frmTransaction())
+            int clientId = _client.Id;
+            using (frmTransaction newForm = new frmTransaction(clientId))
             {
                 newForm.ShowDialog();
             }
@@ -70,14 +88,18 @@ namespace BankSystem
 
         private void cmdCloseAccount_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Hodor?", "Hodor!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            var clientId = _client.Id;
+            if (MessageBox.Show("Are you sure you wat to close this account?", "Hodor!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
-                DialogResult = DialogResult.OK;
+                if (DialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
+                    RefreshData(clientId);
+                }
             }
         }
 
-        private void InitializeClientInfo(int clientId)
+        private void InitializeClientInfo()
         {
 
             lblIdentity.Text = _client.IdentityCard;
@@ -91,7 +113,7 @@ namespace BankSystem
             lblEmail.Text = _client.Email;
         }
 
-        private void InitializeBankAccountInfo(int clientId)
+        private void InitializeBankAccountInfo()
         {
 
             lblIBAN.Text = _bankAccount.IBAN.ToString();
@@ -115,7 +137,6 @@ namespace BankSystem
 
         {
             dtGrdVwCreditCards.DataSource = _bankManager.GetCreditCardListByClientId(clientId);
-
         }
     }
 }

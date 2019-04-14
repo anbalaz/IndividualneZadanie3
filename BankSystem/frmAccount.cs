@@ -110,7 +110,6 @@ namespace BankSystem
                                                                         limitUpDwn.Value
                                                                         ));
                 Close();
-
             }
             else
             {

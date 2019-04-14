@@ -14,5 +14,8 @@ namespace Data.Repositories
 
         DataSet GetTransactionsByClientId(int clientId);
 
+        int InsertTransaction(int from, int to, decimal sum, string category);
+
+        int UpdateMessage(string fieldName, int transactionId, string message);
     }
 }

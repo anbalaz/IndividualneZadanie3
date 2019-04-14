@@ -15,7 +15,7 @@ namespace BankSystem
 
         private void cmdManageAccount_Click(object sender, EventArgs e)
         {
-            if (!_bankManager.ClientId(txtBxIdentity.Text).Equals(string.Empty))
+            if (_bankManager.ClientId(txtBxIdentity.Text)!=0)
             {
                 using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxIdentity.Text)))
                 {

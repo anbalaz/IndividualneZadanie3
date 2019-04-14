@@ -57,7 +57,7 @@ namespace BankSystem
         {
             string ret;
             int clientUpdate = _clientRepository.ClientUpdate(clientId, townId, identityCard, firstName, lastName, street, streetNumber, postalCode, phoneNumber, email);
-            int bankUpdate = _bankAccountRepository.UpdatebankAccount(clientId,limit);
+            int bankUpdate = _bankAccountRepository.UpdatebankAccount(clientId, limit);
 
             if (clientUpdate > 0 && bankUpdate > 0)
             {
@@ -131,6 +131,41 @@ namespace BankSystem
             else
             {
                 ret = "Cant close account";
+            }
+            return ret;
+        }
+
+        public String CreateTransaction(int from, int to, decimal sum, string category, string VS, string CS, string SS, string MessageForReceiver)
+        {
+            string ret;
+
+            int transactionId = _transactionsRepository.InsertTransaction(from, to, sum, category);
+            if (transactionId > 0)
+            {
+                _bankAccountRepository.UpdatebankAccountFrom(transactionId, sum);
+                _bankAccountRepository.UpdatebankAccountTo(transactionId, sum);
+
+                if (!VS.Equals(string.Empty))
+                {
+                    _transactionsRepository.UpdateMessage("VS", transactionId, VS);
+                }
+                if (!CS.Equals(string.Empty))
+                {
+                    _transactionsRepository.UpdateMessage("CS", transactionId, CS);
+                }
+                if (!SS.Equals(string.Empty))
+                {
+                    _transactionsRepository.UpdateMessage("SS", transactionId, SS);
+                }
+                if (!MessageForReceiver.Equals(string.Empty))
+                {
+                    _transactionsRepository.UpdateMessage("MessageForReceiver", transactionId, MessageForReceiver);
+                }
+                ret = "Transaction was sucssessfull";
+            }
+            else
+            {
+                ret = "Transaction was unsucssessfull";
             }
             return ret;
         }

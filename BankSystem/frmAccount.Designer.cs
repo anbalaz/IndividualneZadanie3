@@ -309,6 +309,7 @@
             // 
             // bttnUpdateClient
             // 
+            this.bttnUpdateClient.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.bttnUpdateClient.Location = new System.Drawing.Point(544, 302);
             this.bttnUpdateClient.Name = "bttnUpdateClient";
             this.bttnUpdateClient.Size = new System.Drawing.Size(75, 23);

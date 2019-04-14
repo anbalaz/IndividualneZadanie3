@@ -26,10 +26,6 @@ namespace BankSystem
             InitializeClientInfo(clientId);
             InitializeBankAccountInfo(clientId);
             InitializeCreditCardsgrid(clientId);
-
-
-
-
         }
 
         private void cmdUpdate_Click(object sender, EventArgs e)
@@ -58,7 +54,7 @@ namespace BankSystem
 
         private void cmdAllTransactions_Click(object sender, EventArgs e)
         {
-            using (frmTransactions newForm = new frmTransactions(42))
+            using (frmTransactions newForm = new frmTransactions(_client.IdentityCard))
             {
                 newForm.ShowDialog();
             }

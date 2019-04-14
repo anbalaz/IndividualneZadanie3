@@ -12,6 +12,7 @@ namespace BankSystem
         private IClientRepository _clientRepository = new ClientRepository();
         private ITownRepository _townRepository = new TownRepository();
         private ICreditCardRepository _creditCardRepository = new CreditCardRepository();
+        private ITransactionsRepository _transactionsRepository = new TransactionsRepository();
 
         public String CreateClientAndBankAccount(string identityCard,
                                                 string firstName,
@@ -84,5 +85,14 @@ namespace BankSystem
             return _creditCardRepository.GetCreditCardListByClientId(identityCard);
         }
 
+        public DataSet GetTransactionsByClientId(string identityCard)
+        {
+            return _transactionsRepository.GetTransactionsByClientId(identityCard);
+        }
+
+        public DataSet GetAllTransactions()
+        {
+            return _transactionsRepository.GetAllTransactions();
+        }
     }
 }

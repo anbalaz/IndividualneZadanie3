@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,5 +11,8 @@ namespace Data.Repositories
     public interface ITransactionsRepository
     {
         DataSet GetAllTransactions();
+
+        DataSet GetTransactionsByClientId(string identityCard);
+
     }
 }

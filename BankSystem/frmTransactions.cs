@@ -13,6 +13,7 @@ namespace BankSystem
 {
     public partial class frmTransactions : Form
     {
+        private BankManager _bankManager = new BankManager();
 
         /// <summary>
         /// Used when viewing all transactions.
@@ -20,15 +21,20 @@ namespace BankSystem
         public frmTransactions()
         {
             InitializeComponent();
-            SetUpTransactionsGridSet();
+            SetUpAllTransactionsGridSet();
         }
 
 
 
-        private void SetUpTransactionsGridSet()
+        private void SetUpAllTransactionsGridSet()
         {
-            TransactionsRepository transactionsRepositories = new TransactionsRepository();
-            AllTransactionsDtGrdVw.DataSource = transactionsRepositories.GetAllTransactions();
+            AllTransactionsDtGrdVw.DataSource = _bankManager.GetAllTransactions();
+            AllTransactionsDtGrdVw.DataMember = "Transactions";
+        }
+
+        private void SetUpTransactionsByIdGridSet(string identityCard)
+        {
+            AllTransactionsDtGrdVw.DataSource = _bankManager.GetTransactionsByClientId(identityCard);
             AllTransactionsDtGrdVw.DataMember = "Transactions";
         }
 
@@ -36,9 +42,10 @@ namespace BankSystem
         /// Used when viewing selected client's transactions.
         /// </summary>
         /// <param name="clientId"></param>
-        public frmTransactions(int clientId)
+        public frmTransactions(string clientId)
         {
             InitializeComponent();
+            SetUpTransactionsByIdGridSet(clientId);
         }
     }
 }

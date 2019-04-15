@@ -32,17 +32,17 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::TransformerBank.Properties.Resources.bank_islam;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(512, 444);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.DoubleBuffered = true;
             this.Location = new System.Drawing.Point(100, 200);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ATM";
+            this.Click += new System.EventHandler(this.frmMain_Click);
             this.ResumeLayout(false);
 
         }

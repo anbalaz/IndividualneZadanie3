@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace TransformerBank
 {
-    public partial class frmMain : Form
+    public partial class frmWithdrawalDeposit : Form
     {
-        public frmMain()
+        public frmWithdrawalDeposit()
         {
             InitializeComponent();
-        }
-
-        private void frmMain_Click(object sender, EventArgs e)
-        {
-            using (frmLogin newForm = new frmLogin())
-            {
-                newForm.ShowDialog();
-            }
         }
     }
 }

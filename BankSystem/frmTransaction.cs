@@ -34,6 +34,17 @@ namespace BankSystem
             lblSumReceiver.Text = _receiver.CurrentSum.ToString();
             lblLimitReceiver.Text = _receiver.Limit.ToString();
 
+            txtBxCS.Visible = false; ;
+            txtBxSS.Visible = false; ;
+            txtBxVS.Visible = false; ;
+            txtBxMessage.Visible = false;
+            lblVS.Visible = false;
+            lblCS.Visible = false;
+            lblSS.Visible = false;
+            lblMessage.Visible = false;
+
+
+
             if (_receiver.Id == 1)
             {
                 lblTransaction.Text = "WITHDRAWAL";

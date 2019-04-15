@@ -10,6 +10,7 @@ namespace Data.Repositories
     {
 
         private string _getCreditCardListByClientId = @"SELECT cc.Id,
+                                                        cc.CardNumber,
                                                         cc.CreationCardDate,
                                                         cc.ExpirationDate, 
                                                         cc.IsCardBlocked, 
@@ -71,10 +72,11 @@ namespace Data.Repositories
                                 {
                                     CreditCard creditCard = new CreditCard();
                                     creditCard.Id = reader.GetInt32(0);
-                                    creditCard.CreationCardDate = reader.GetDateTime(1);
-                                    creditCard.ExpirationDate = reader.GetDateTime(2);
-                                    creditCard.IsCardBlocked = reader.GetBoolean(3);
-                                    creditCard.PasswordCard = reader.GetString(4);
+                                    creditCard.CardNumber = reader.GetInt32(1);
+                                    creditCard.CreationCardDate = reader.GetDateTime(2);
+                                    creditCard.ExpirationDate = reader.GetDateTime(3);
+                                    creditCard.IsCardBlocked = reader.GetBoolean(4);
+                                    creditCard.PasswordCard = reader.GetString(5);
                                     creditCards.Add(creditCard);
                                 }
                             }

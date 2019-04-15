@@ -6,6 +6,7 @@ namespace Data.Models
     {
         public int Id { get; set; }
         public BankAccount BankAccount { get; set; }
+        public int CardNumber { get; set; }
         public DateTime CreationCardDate { get; set; }
         public DateTime ExpirationDate { get; set; }
         public bool IsCardBlocked { get; set; }

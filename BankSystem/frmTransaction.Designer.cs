@@ -31,26 +31,26 @@
             this.lblTransaction = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grpBxSender = new System.Windows.Forms.GroupBox();
-            this.grpBxReceiver = new System.Windows.Forms.GroupBox();
+            this.lblLimitSender = new System.Windows.Forms.Label();
+            this.lblLimitS = new System.Windows.Forms.Label();
+            this.lblSumSender = new System.Windows.Forms.Label();
             this.lblSumS = new System.Windows.Forms.Label();
             this.lblIBANSender = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblSumSender = new System.Windows.Forms.Label();
-            this.lblLimitSender = new System.Windows.Forms.Label();
-            this.lblLimitS = new System.Windows.Forms.Label();
+            this.grpBxReceiver = new System.Windows.Forms.GroupBox();
             this.lblLimitReceiver = new System.Windows.Forms.Label();
-            this.lblLimitR = new System.Windows.Forms.Label();
-            this.lblSumReceiver = new System.Windows.Forms.Label();
             this.lblSumR = new System.Windows.Forms.Label();
-            this.lblIBANReceiver = new System.Windows.Forms.Label();
+            this.lblLimitR = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblSumReceiver = new System.Windows.Forms.Label();
+            this.lblIBANReceiver = new System.Windows.Forms.Label();
             this.txtBxVS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lmtUpDwnSumToTransfer = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblVS = new System.Windows.Forms.Label();
+            this.lblSS = new System.Windows.Forms.Label();
+            this.lblCS = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.txtBxSS = new System.Windows.Forms.TextBox();
             this.txtBxCS = new System.Windows.Forms.TextBox();
             this.txtBxMessage = new System.Windows.Forms.TextBox();
@@ -85,20 +85,32 @@
             this.grpBxSender.TabStop = false;
             this.grpBxSender.Text = "SENDER";
             // 
-            // grpBxReceiver
+            // lblLimitSender
             // 
-            this.grpBxReceiver.Controls.Add(this.lblLimitReceiver);
-            this.grpBxReceiver.Controls.Add(this.lblSumR);
-            this.grpBxReceiver.Controls.Add(this.lblLimitR);
-            this.grpBxReceiver.Controls.Add(this.label10);
-            this.grpBxReceiver.Controls.Add(this.lblSumReceiver);
-            this.grpBxReceiver.Controls.Add(this.lblIBANReceiver);
-            this.grpBxReceiver.Location = new System.Drawing.Point(325, 25);
-            this.grpBxReceiver.Name = "grpBxReceiver";
-            this.grpBxReceiver.Size = new System.Drawing.Size(200, 159);
-            this.grpBxReceiver.TabIndex = 10;
-            this.grpBxReceiver.TabStop = false;
-            this.grpBxReceiver.Text = "RECEIVER";
+            this.lblLimitSender.AutoSize = true;
+            this.lblLimitSender.Location = new System.Drawing.Point(6, 132);
+            this.lblLimitSender.Name = "lblLimitSender";
+            this.lblLimitSender.Size = new System.Drawing.Size(24, 13);
+            this.lblLimitSender.TabIndex = 16;
+            this.lblLimitSender.Text = "limit";
+            // 
+            // lblLimitS
+            // 
+            this.lblLimitS.AutoSize = true;
+            this.lblLimitS.Location = new System.Drawing.Point(6, 109);
+            this.lblLimitS.Name = "lblLimitS";
+            this.lblLimitS.Size = new System.Drawing.Size(35, 13);
+            this.lblLimitS.TabIndex = 15;
+            this.lblLimitS.Text = "LIMIT";
+            // 
+            // lblSumSender
+            // 
+            this.lblSumSender.AutoSize = true;
+            this.lblSumSender.Location = new System.Drawing.Point(6, 87);
+            this.lblSumSender.Name = "lblSumSender";
+            this.lblSumSender.Size = new System.Drawing.Size(62, 13);
+            this.lblSumSender.TabIndex = 14;
+            this.lblSumSender.Text = "current sum";
             // 
             // lblSumS
             // 
@@ -127,32 +139,20 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "IBAN";
             // 
-            // lblSumSender
+            // grpBxReceiver
             // 
-            this.lblSumSender.AutoSize = true;
-            this.lblSumSender.Location = new System.Drawing.Point(6, 87);
-            this.lblSumSender.Name = "lblSumSender";
-            this.lblSumSender.Size = new System.Drawing.Size(62, 13);
-            this.lblSumSender.TabIndex = 14;
-            this.lblSumSender.Text = "current sum";
-            // 
-            // lblLimitSender
-            // 
-            this.lblLimitSender.AutoSize = true;
-            this.lblLimitSender.Location = new System.Drawing.Point(6, 132);
-            this.lblLimitSender.Name = "lblLimitSender";
-            this.lblLimitSender.Size = new System.Drawing.Size(24, 13);
-            this.lblLimitSender.TabIndex = 16;
-            this.lblLimitSender.Text = "limit";
-            // 
-            // lblLimitS
-            // 
-            this.lblLimitS.AutoSize = true;
-            this.lblLimitS.Location = new System.Drawing.Point(6, 109);
-            this.lblLimitS.Name = "lblLimitS";
-            this.lblLimitS.Size = new System.Drawing.Size(35, 13);
-            this.lblLimitS.TabIndex = 15;
-            this.lblLimitS.Text = "LIMIT";
+            this.grpBxReceiver.Controls.Add(this.lblLimitReceiver);
+            this.grpBxReceiver.Controls.Add(this.lblSumR);
+            this.grpBxReceiver.Controls.Add(this.lblLimitR);
+            this.grpBxReceiver.Controls.Add(this.label10);
+            this.grpBxReceiver.Controls.Add(this.lblSumReceiver);
+            this.grpBxReceiver.Controls.Add(this.lblIBANReceiver);
+            this.grpBxReceiver.Location = new System.Drawing.Point(325, 25);
+            this.grpBxReceiver.Name = "grpBxReceiver";
+            this.grpBxReceiver.Size = new System.Drawing.Size(200, 159);
+            this.grpBxReceiver.TabIndex = 10;
+            this.grpBxReceiver.TabStop = false;
+            this.grpBxReceiver.Text = "RECEIVER";
             // 
             // lblLimitReceiver
             // 
@@ -163,6 +163,15 @@
             this.lblLimitReceiver.TabIndex = 22;
             this.lblLimitReceiver.Text = "limit";
             // 
+            // lblSumR
+            // 
+            this.lblSumR.AutoSize = true;
+            this.lblSumR.Location = new System.Drawing.Point(16, 64);
+            this.lblSumR.Name = "lblSumR";
+            this.lblSumR.Size = new System.Drawing.Size(87, 13);
+            this.lblSumR.TabIndex = 17;
+            this.lblSumR.Text = "CURRENT SUM";
+            // 
             // lblLimitR
             // 
             this.lblLimitR.AutoSize = true;
@@ -171,6 +180,15 @@
             this.lblLimitR.Size = new System.Drawing.Size(35, 13);
             this.lblLimitR.TabIndex = 21;
             this.lblLimitR.Text = "LIMIT";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "IBAN";
             // 
             // lblSumReceiver
             // 
@@ -181,15 +199,6 @@
             this.lblSumReceiver.TabIndex = 20;
             this.lblSumReceiver.Text = "current sum";
             // 
-            // lblSumR
-            // 
-            this.lblSumR.AutoSize = true;
-            this.lblSumR.Location = new System.Drawing.Point(16, 64);
-            this.lblSumR.Name = "lblSumR";
-            this.lblSumR.Size = new System.Drawing.Size(87, 13);
-            this.lblSumR.TabIndex = 17;
-            this.lblSumR.Text = "CURRENT SUM";
-            // 
             // lblIBANReceiver
             // 
             this.lblIBANReceiver.AutoSize = true;
@@ -198,15 +207,6 @@
             this.lblIBANReceiver.Size = new System.Drawing.Size(27, 13);
             this.lblIBANReceiver.TabIndex = 18;
             this.lblIBANReceiver.Text = "iban";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "IBAN";
             // 
             // txtBxVS
             // 
@@ -242,41 +242,41 @@
             0,
             65536});
             // 
-            // label7
+            // lblVS
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 204);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 13);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "VS";
+            this.lblVS.AutoSize = true;
+            this.lblVS.Location = new System.Drawing.Point(32, 204);
+            this.lblVS.Name = "lblVS";
+            this.lblVS.Size = new System.Drawing.Size(21, 13);
+            this.lblVS.TabIndex = 38;
+            this.lblVS.Text = "VS";
             // 
-            // label9
+            // lblSS
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(124, 204);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(21, 13);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "SS";
+            this.lblSS.AutoSize = true;
+            this.lblSS.Location = new System.Drawing.Point(124, 204);
+            this.lblSS.Name = "lblSS";
+            this.lblSS.Size = new System.Drawing.Size(21, 13);
+            this.lblSS.TabIndex = 39;
+            this.lblSS.Text = "SS";
             // 
-            // label11
+            // lblCS
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(217, 205);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(21, 13);
-            this.label11.TabIndex = 40;
-            this.label11.Text = "KS";
+            this.lblCS.AutoSize = true;
+            this.lblCS.Location = new System.Drawing.Point(217, 205);
+            this.lblCS.Name = "lblCS";
+            this.lblCS.Size = new System.Drawing.Size(21, 13);
+            this.lblCS.TabIndex = 40;
+            this.lblCS.Text = "CS";
             // 
-            // label12
+            // lblMessage
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(322, 204);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(141, 13);
-            this.label12.TabIndex = 41;
-            this.label12.Text = "MESSAGE FOR RECEIVER";
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(322, 204);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(141, 13);
+            this.lblMessage.TabIndex = 41;
+            this.lblMessage.Text = "MESSAGE FOR RECEIVER";
             // 
             // txtBxSS
             // 
@@ -285,10 +285,10 @@
             this.txtBxSS.Size = new System.Drawing.Size(65, 20);
             this.txtBxSS.TabIndex = 42;
             // 
-            // txtBxKS
+            // txtBxCS
             // 
             this.txtBxCS.Location = new System.Drawing.Point(220, 229);
-            this.txtBxCS.Name = "txtBxKS";
+            this.txtBxCS.Name = "txtBxCS";
             this.txtBxCS.Size = new System.Drawing.Size(65, 20);
             this.txtBxCS.TabIndex = 43;
             // 
@@ -330,17 +330,17 @@
             this.Controls.Add(this.txtBxMessage);
             this.Controls.Add(this.txtBxCS);
             this.Controls.Add(this.txtBxSS);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.lblCS);
+            this.Controls.Add(this.lblSS);
+            this.Controls.Add(this.lblVS);
             this.Controls.Add(this.txtBxVS);
             this.Controls.Add(this.lmtUpDwnSumToTransfer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.grpBxReceiver);
             this.Controls.Add(this.grpBxSender);
             this.Controls.Add(this.lblTransaction);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmTransaction";
@@ -374,10 +374,10 @@
         private System.Windows.Forms.Label lblIBANReceiver;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown lmtUpDwnSumToTransfer;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblVS;
+        private System.Windows.Forms.Label lblSS;
+        private System.Windows.Forms.Label lblCS;
+        private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.TextBox txtBxSS;
         private System.Windows.Forms.TextBox txtBxCS;
         private System.Windows.Forms.TextBox txtBxMessage;

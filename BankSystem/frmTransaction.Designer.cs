@@ -411,7 +411,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmTransaction";
+            this.Text = "Transaction";
             this.grpBxSender.ResumeLayout(false);
             this.grpBxSender.PerformLayout();
             this.grpBxReceiver.ResumeLayout(false);

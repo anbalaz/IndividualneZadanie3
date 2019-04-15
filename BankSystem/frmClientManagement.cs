@@ -160,15 +160,7 @@ namespace BankSystem
 
         private void bttnAddCard_Click(object sender, EventArgs e)
         {
-            string ret = "Card was not created";
-            Random random = new Random();
-            int password = random.Next(1000,9999);
-            int cardNumber = random.Next(10000000,99999999);
-            if (_bankManager.CreateCreditCardByAccountId(_bankAccount.Id, cardNumber, password) > 0)
-            {
-                ret = "Card was  created";
-            }
-            MessageBox.Show(ret);
+            MessageBox.Show(_bankManager.CreateCreditCardByAccountId(_bankAccount.Id));
             RefreshData(_client.Id);
         }
 

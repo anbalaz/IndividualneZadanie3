@@ -5,6 +5,6 @@ namespace Data.Repositories
 {
     public interface ICountryRepository
     {
-        List<Country> GeListData();
+        List<Country> SelectTowms();
     }
 }

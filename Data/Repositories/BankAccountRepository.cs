@@ -99,7 +99,7 @@ namespace Data.Repositories
             }
         }
 
-        public BankAccount GetBankAccountByClientId(int clientId)
+        public BankAccount SelectBankAccountByClientId(int clientId)
         {
             BankAccount bankAccount = new BankAccount();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))

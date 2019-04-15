@@ -6,7 +6,7 @@ namespace Data.Repositories
 {
     public interface ICreditCardRepository
     {
-        List<CreditCard> GetCreditCardListByClientId(int clientId);
+        List<CreditCard> SelectCreditCardListByClientId(int clientId);
         DataSet SelectCreditCardByCardByClientId(int clientId);
         CreditCard SelectCreditCardByCardNumber(int cardNumber);
         int InsertCreditCardByBankAccountId(int bankAccountId, int cardNumber, int cardPassword);

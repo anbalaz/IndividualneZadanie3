@@ -10,7 +10,7 @@ namespace Data.Repositories
 {
     public interface ITownRepository
     {
-        List<Town> GeListData();
+        List<Town> SelectListData();
         DataSet SelectTopTowns();
     }
 }

@@ -10,9 +10,9 @@ namespace Data.Repositories
 {
     public interface ITransactionsRepository
     {
-        DataSet GetAllTransactions();
+        DataSet SelectAllTransactions();
 
-        DataSet GetTransactionsByClientId(int clientId);
+        DataSet SelectTransactionsByClientId(int clientId);
 
         int InsertTransaction(int from, int to, decimal sum, string category);
 

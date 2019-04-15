@@ -132,7 +132,7 @@ namespace Data.Repositories
             }
         }
 
-        public Client GetClientById(int clientId)
+        public Client SelectClientById(int clientId)
         {
             Client client = new Client();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -175,7 +175,7 @@ namespace Data.Repositories
             }
         }
 
-        public DataSet GetClientSearch(string searchString)
+        public DataSet SelectClientSearch(string searchString)
         {
             DataSet ds = new DataSet();
             searchString = $"%{searchString}%";
@@ -201,7 +201,7 @@ namespace Data.Repositories
             }
         }
 
-        public int ClientId(string identityCard)
+        public int SelectClientId(string identityCard)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
@@ -223,7 +223,7 @@ namespace Data.Repositories
             }
         }
 
-        public int ClientUpdate(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email)
+        public int SelectClientUpdate(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {

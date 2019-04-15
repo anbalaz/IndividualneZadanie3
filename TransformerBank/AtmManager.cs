@@ -21,7 +21,7 @@ namespace TransformerBank
 
         public BankAccount GetBankAccountByClientId(int clientId)
         {
-            return _bankAccountRepository.GetBankAccountByClientId(clientId);
+            return _bankAccountRepository.SelectBankAccountByClientId(clientId);
         }
 
         public BankAccount GetBankAccountByCreditNumber(int creditNumber)

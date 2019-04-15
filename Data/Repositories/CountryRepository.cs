@@ -7,7 +7,7 @@ namespace Data.Repositories
 {
     public class CountryRepository: ICountryRepository
     {
-        public List<Country> GeListData()
+        public List<Country> SelectTowms()
         {
             List<Country> countries = new List<Country>();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))

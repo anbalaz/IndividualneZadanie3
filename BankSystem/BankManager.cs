@@ -71,7 +71,7 @@ namespace BankSystem
         public String UpdateClientAndBankAccount(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email, decimal limit)
         {
             string ret;
-            int clientUpdate = _clientRepository.ClientUpdate(clientId, townId, identityCard, firstName, lastName, street, streetNumber, postalCode, phoneNumber, email);
+            int clientUpdate = _clientRepository.SelectClientUpdate(clientId, townId, identityCard, firstName, lastName, street, streetNumber, postalCode, phoneNumber, email);
             int bankUpdate = _bankAccountRepository.UpdatebankAccount(clientId, limit);
 
             if (clientUpdate > 0 && bankUpdate > 0)
@@ -96,7 +96,7 @@ namespace BankSystem
 
         public List<Town> GetListOfTowns()
         {
-            return _townRepository.GeListData();
+            return _townRepository.SelectListData();
         }
         /// <summary>
         /// Search through clientIdentityCard, IBAN and LastName
@@ -105,28 +105,28 @@ namespace BankSystem
         /// <returns></returns>
         public DataSet GetSearchedClients(string searchString)
         {
-            return _clientRepository.GetClientSearch(searchString);
+            return _clientRepository.SelectClientSearch(searchString);
         }
 
         public Client GetClientById(int clientId)
         {
-            return _clientRepository.GetClientById(clientId);
+            return _clientRepository.SelectClientById(clientId);
         }
 
         public int ClientId(string identityCard)
         {
-            return _clientRepository.ClientId(identityCard);
+            return _clientRepository.SelectClientId(identityCard);
 
         }
 
         public BankAccount GetBankAccountByClientId(int clientId)
         {
-            return _bankAccountRepository.GetBankAccountByClientId(clientId);
+            return _bankAccountRepository.SelectBankAccountByClientId(clientId);
         }
 
         public List<CreditCard> GetCreditCardListByClientId(int clientId)
         {
-            return _creditCardRepository.GetCreditCardListByClientId(clientId);
+            return _creditCardRepository.SelectCreditCardListByClientId(clientId);
         }
 
         public DataSet GetCreditCardsByClientId(int clientId)
@@ -136,12 +136,12 @@ namespace BankSystem
 
         public DataSet GetTransactionsByClientId(int clientId)
         {
-            return _transactionsRepository.GetTransactionsByClientId(clientId);
+            return _transactionsRepository.SelectTransactionsByClientId(clientId);
         }
 
         public DataSet GetAllTransactions()
         {
-            return _transactionsRepository.GetAllTransactions();
+            return _transactionsRepository.SelectAllTransactions();
         }
         /// <summary>
         /// 
@@ -240,9 +240,18 @@ namespace BankSystem
             return _bankAccountRepository.SelectBankAccountByIBAN(IBAN);
         }
 
-        public int CreateCreditCardByAccountId(int bankAccountId, int cardNumber, int cardPassword)
+        public string CreateCreditCardByAccountId(int bankAccountId)
         {
-            return _creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, cardPassword);
+            string ret = "Card was not created";
+
+            Random random = new Random();
+            int password = random.Next(1000, 9999);
+            int cardNumber = random.Next(10000000, 99999999);
+            if (_creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, password) > 0)
+            {
+                ret = "Card was  created";
+            }
+            return ret;
         }
 
         public decimal GetSumOfMoneyOnAccounts()
@@ -269,5 +278,7 @@ namespace BankSystem
         {
             return _clientRepository.SelectNewclients();
         }
+
+
     }
 }

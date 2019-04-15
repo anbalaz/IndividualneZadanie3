@@ -7,10 +7,10 @@ namespace Data.Repositories
     {
         int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email);
         int DeleteClient(int clientId);
-        Client GetClientById(int clientId);
-        DataSet GetClientSearch(string identityCard);
-        int ClientId(string identityCard);
-        int ClientUpdate(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email);
+        Client SelectClientById(int clientId);
+        DataSet SelectClientSearch(string identityCard);
+        int SelectClientId(string identityCard);
+        int SelectClientUpdate(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email);
         Client SelectClientByIBAN(string IBAN);
         DataSet SelectNewclients();
     }

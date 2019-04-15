@@ -98,7 +98,7 @@
             this.Controls.Add(this.cmdManageAccount);
             this.Name = "frmAccounts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmClients";
+            this.Text = "Accounts";
             ((System.ComponentModel.ISupportInitialize)(this.searchedClientsDtGrdVw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

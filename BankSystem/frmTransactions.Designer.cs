@@ -55,7 +55,7 @@
             this.Controls.Add(this.AllTransactionsDtGrdVw);
             this.Name = "frmTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTransactions";
+            this.Text = "Transactions";
             ((System.ComponentModel.ISupportInitialize)(this.AllTransactionsDtGrdVw)).EndInit();
             this.ResumeLayout(false);
 

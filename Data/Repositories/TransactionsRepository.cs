@@ -22,13 +22,7 @@ namespace Data.Repositories
                                               VALUES ((SELECT Id FROM BankAccount WHERE ID=@from),(SELECT Id FROM BankAccount WHERE ID=@to),@sum,@category,GETDATE());";
         private string _deleteTransaction = @"Delete Transactions WHERE Id=@transactionId";
 
-        public DataSet GetAllTransactions()
-        {
-            DataSet ds = new DataSet();
-            try
-            {
-                SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING);
-                string query = @"SELECT t.Id AS[ID of transaction], 
+        private string _selectAllTransactions = @"SELECT t.Id AS[ID of transaction], 
                             bka.IBAN AS[Money sent from], 
                             ba.IBAN AS[Money send to], 
                             t.VS,t.SS,t.CS,t.MessageForReceiver,T.MoneyTransaction,T.Category,t.DateOfTransaction 
@@ -36,9 +30,16 @@ namespace Data.Repositories
                             INNER JOIN BankAccount AS ba ON t.BankAccountIdTo = ba.Id
                             INNER JOIN BankAccount AS bka ON t.BankAccountIdFrom = bka.Id;";
 
+        public DataSet SelectAllTransactions()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING);
+
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = query;
+                command.CommandText = _selectAllTransactions;
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(ds, "Transactions");
@@ -53,7 +54,7 @@ namespace Data.Repositories
             }
         }
 
-        public DataSet GetTransactionsByClientId(int clientId)
+        public DataSet SelectTransactionsByClientId(int clientId)
         {
             DataSet ds = new DataSet();
             try

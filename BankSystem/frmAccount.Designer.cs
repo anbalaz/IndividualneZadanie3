@@ -203,6 +203,7 @@
             // 
             // townCmbBx
             // 
+            this.townCmbBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.townCmbBx.FormattingEnabled = true;
             this.townCmbBx.Location = new System.Drawing.Point(11, 149);
             this.townCmbBx.Name = "townCmbBx";
@@ -332,7 +333,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "4";
+            this.Text = "Account";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

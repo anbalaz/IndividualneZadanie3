@@ -16,7 +16,11 @@ namespace Data.Repositories
                                       Group BY t.Name
                                       ORDER BY [Number of clients] DESC";
 
-        public List<Town> GeListData()
+        private string _selectListData= @"SELECT c.*,t.Id,t.Name FROM TOWN as t
+                                            INNER JOIN country AS c ON t.CountryId = c.Id
+                                            WHERE CountryId = c.Id; ";
+
+        public List<Town> SelectListData()
         {
             List<Town> towns = new List<Town>();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -24,9 +28,7 @@ namespace Data.Repositories
                 connection.Open();
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = @"SELECT c.*,t.Id,t.Name FROM TOWN as t
-                                            INNER JOIN country AS c ON t.CountryId = c.Id
-                                            WHERE CountryId = c.Id; ";
+                    command.CommandText = _selectListData;
                     try
                     {
                         using (SqlDataReader reader = command.ExecuteReader())

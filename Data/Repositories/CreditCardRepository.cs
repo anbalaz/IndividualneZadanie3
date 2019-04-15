@@ -29,7 +29,7 @@ namespace Data.Repositories
         private string _insertCreditCardByBankAccountId = @"INSERT INTO CreditCard (BankAccountId,CardNumber,CreationCardDate,ExpirationDate,IsCardBlocked,PasswordCard)
                             VALUES ((SELECT Id FROM BankAccount WHERE ID=@bankAccountId),@cardNumber,GETDATE(),DATEADD(YEAR,5,GETDATE()),0,@cardPassword);";
 
-        public List<CreditCard> GetCreditCardListByClientId(int clientId)
+        public List<CreditCard> SelectCreditCardListByClientId(int clientId)
         {
             List<CreditCard> creditCards = new List<CreditCard>();
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))

@@ -139,7 +139,7 @@ namespace BankSystem
             bttnOkTransaction.Enabled = false;
             _receiver = _bankManager.GetBankAccountByIBAN(txtBxIBAN.Text);
 
-            if (_receiver.Id != 0 && _receiver.Id != BankManager.BANK_IDENTIY && _receiver.Id != _senderId && _receiver.TerminationDate >= DateTime.Now)
+            if (_receiver.Id != 0 && _receiver.Id != BankManager.BANK_IDENTIY && _receiver.Id != _senderId && _receiver.TerminationDate <= DateTime.Now)
             {
                 lblOwner.Text = $"{_bankManager.GetClientByIBAN(txtBxIBAN.Text).FirstName} {_bankManager.GetClientByIBAN(txtBxIBAN.Text).LastName}";
                 bttnOkTransaction.Enabled = true;

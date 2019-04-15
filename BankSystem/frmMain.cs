@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankSystem
@@ -13,7 +6,7 @@ namespace BankSystem
     public partial class frmMain : Form
     {
         private BankManager _bankManager = new BankManager();
-        
+
         public frmMain()
         {
             InitializeComponent();
@@ -23,11 +16,14 @@ namespace BankSystem
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
             int identity = _bankManager.ClientId(txtBxSearchIdentity.Text);
-            if (identity != 0 && identity!= BankManager.BANK_IDENTIY)
+            if (identity != 0 && identity != BankManager.BANK_IDENTIY)
             {
                 using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxSearchIdentity.Text)))
                 {
-                    newForm.ShowDialog();
+                    if (newForm.ShowDialog() == DialogResult.No)
+                    {
+                        RefreshData();
+                    }
                 }
             }
             else
@@ -63,7 +59,7 @@ namespace BankSystem
 
         public void RefreshData()
         {
-            lblSumMoney.Text= _bankManager.GetSumOfMoneyOnAccounts().ToString();
+            lblSumMoney.Text = _bankManager.GetSumOfMoneyOnAccounts().ToString();
             lblNumberOfClients.Text = _bankManager.GetCountOfClients().ToString();
             dtGrdVwTopTowns.DataSource = _bankManager.GetTopTowns();
             dtGrdVwTopTowns.DataMember = "Towns";

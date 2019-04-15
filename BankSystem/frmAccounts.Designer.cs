@@ -38,7 +38,7 @@
             // 
             // searchStringTxtBx
             // 
-            this.searchStringTxtBx.Location = new System.Drawing.Point(102, 27);
+            this.searchStringTxtBx.Location = new System.Drawing.Point(185, 27);
             this.searchStringTxtBx.Margin = new System.Windows.Forms.Padding(2);
             this.searchStringTxtBx.Name = "searchStringTxtBx";
             this.searchStringTxtBx.Size = new System.Drawing.Size(235, 20);
@@ -46,7 +46,7 @@
             // 
             // cmdFindClient
             // 
-            this.cmdFindClient.Location = new System.Drawing.Point(341, 24);
+            this.cmdFindClient.Location = new System.Drawing.Point(424, 24);
             this.cmdFindClient.Name = "cmdFindClient";
             this.cmdFindClient.Size = new System.Drawing.Size(112, 23);
             this.cmdFindClient.TabIndex = 12;
@@ -57,7 +57,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 9);
+            this.label2.Location = new System.Drawing.Point(209, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 13);
             this.label2.TabIndex = 14;
@@ -66,17 +66,19 @@
             // searchedClientsDtGrdVw
             // 
             this.searchedClientsDtGrdVw.AllowUserToAddRows = false;
+            this.searchedClientsDtGrdVw.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.searchedClientsDtGrdVw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchedClientsDtGrdVw.Location = new System.Drawing.Point(45, 53);
+            this.searchedClientsDtGrdVw.Location = new System.Drawing.Point(12, 64);
             this.searchedClientsDtGrdVw.Name = "searchedClientsDtGrdVw";
             this.searchedClientsDtGrdVw.ReadOnly = true;
             this.searchedClientsDtGrdVw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.searchedClientsDtGrdVw.Size = new System.Drawing.Size(476, 150);
+            this.searchedClientsDtGrdVw.Size = new System.Drawing.Size(560, 156);
             this.searchedClientsDtGrdVw.TabIndex = 15;
             // 
             // cmdManageAccount
             // 
-            this.cmdManageAccount.Location = new System.Drawing.Point(224, 237);
+            this.cmdManageAccount.Location = new System.Drawing.Point(262, 274);
             this.cmdManageAccount.Name = "cmdManageAccount";
             this.cmdManageAccount.Size = new System.Drawing.Size(75, 37);
             this.cmdManageAccount.TabIndex = 10;

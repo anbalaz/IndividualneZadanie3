@@ -34,12 +34,6 @@
             this.cmdAllTransactions = new System.Windows.Forms.Button();
             this.cmdWithdrawal = new System.Windows.Forms.Button();
             this.cmdDeposit = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -74,6 +68,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bttnUnblockCard = new System.Windows.Forms.Button();
             this.bttnAddCard = new System.Windows.Forms.Button();
+            this.bttnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwCreditCards)).BeginInit();
@@ -91,7 +86,7 @@
             // 
             // cmdNewTransaction
             // 
-            this.cmdNewTransaction.Location = new System.Drawing.Point(397, 429);
+            this.cmdNewTransaction.Location = new System.Drawing.Point(198, 429);
             this.cmdNewTransaction.Name = "cmdNewTransaction";
             this.cmdNewTransaction.Size = new System.Drawing.Size(112, 23);
             this.cmdNewTransaction.TabIndex = 5;
@@ -101,7 +96,7 @@
             // 
             // cmdCloseAccount
             // 
-            this.cmdCloseAccount.Location = new System.Drawing.Point(397, 487);
+            this.cmdCloseAccount.Location = new System.Drawing.Point(198, 487);
             this.cmdCloseAccount.Name = "cmdCloseAccount";
             this.cmdCloseAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdCloseAccount.TabIndex = 6;
@@ -111,7 +106,7 @@
             // 
             // cmdAllTransactions
             // 
-            this.cmdAllTransactions.Location = new System.Drawing.Point(397, 358);
+            this.cmdAllTransactions.Location = new System.Drawing.Point(198, 360);
             this.cmdAllTransactions.Name = "cmdAllTransactions";
             this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 8;
@@ -138,72 +133,6 @@
             this.cmdDeposit.Text = "Deposit";
             this.cmdDeposit.UseVisualStyleBackColor = true;
             this.cmdDeposit.Click += new System.EventHandler(this.cmdDeposit_Click);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.MediumPurple;
-            this.label3.Location = new System.Drawing.Point(133, 306);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 60);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "< Odklik na úpravu údajov o účte/klientovi";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label4.Location = new System.Drawing.Point(515, 480);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(233, 60);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "< Odklik na zatvorenie účtu";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.Olive;
-            this.label5.Location = new System.Drawing.Point(133, 392);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(233, 60);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "< Odklik na vloženie peňazí na účet";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label6.Location = new System.Drawing.Point(135, 480);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(233, 60);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "< Odklik na výber peňazí z účtu";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label7.Location = new System.Drawing.Point(515, 336);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(233, 60);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "< Odklik na zobrazenie transakcií na účte";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(515, 422);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(233, 60);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "< Odklik na zadanie novej transakcie";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
@@ -514,6 +443,7 @@
             this.dtGrdVwCreditCards.AllowUserToOrderColumns = true;
             this.dtGrdVwCreditCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGrdVwCreditCards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwCreditCards.Location = new System.Drawing.Point(12, 194);
             this.dtGrdVwCreditCards.Name = "dtGrdVwCreditCards";
@@ -533,7 +463,7 @@
             // 
             // bttnUnblockCard
             // 
-            this.bttnUnblockCard.Location = new System.Drawing.Point(548, 306);
+            this.bttnUnblockCard.Location = new System.Drawing.Point(365, 429);
             this.bttnUnblockCard.Name = "bttnUnblockCard";
             this.bttnUnblockCard.Size = new System.Drawing.Size(112, 23);
             this.bttnUnblockCard.TabIndex = 40;
@@ -543,7 +473,7 @@
             // 
             // bttnAddCard
             // 
-            this.bttnAddCard.Location = new System.Drawing.Point(397, 306);
+            this.bttnAddCard.Location = new System.Drawing.Point(365, 360);
             this.bttnAddCard.Name = "bttnAddCard";
             this.bttnAddCard.Size = new System.Drawing.Size(112, 23);
             this.bttnAddCard.TabIndex = 41;
@@ -551,23 +481,30 @@
             this.bttnAddCard.UseVisualStyleBackColor = true;
             this.bttnAddCard.Click += new System.EventHandler(this.bttnAddCard_Click);
             // 
+            // bttnClose
+            // 
+            this.bttnClose.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.bttnClose.Location = new System.Drawing.Point(365, 487);
+            this.bttnClose.Name = "bttnClose";
+            this.bttnClose.Size = new System.Drawing.Size(112, 23);
+            this.bttnClose.TabIndex = 42;
+            this.bttnClose.Text = "CLOSE";
+            this.bttnClose.UseVisualStyleBackColor = true;
+            this.bttnClose.Click += new System.EventHandler(this.bttnClose_Click);
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 579);
+            this.ControlBox = false;
+            this.Controls.Add(this.bttnClose);
             this.Controls.Add(this.bttnAddCard);
             this.Controls.Add(this.bttnUnblockCard);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtGrdVwCreditCards);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.cmdDeposit);
             this.Controls.Add(this.cmdWithdrawal);
             this.Controls.Add(this.cmdAllTransactions);
@@ -594,12 +531,6 @@
         private System.Windows.Forms.Button cmdAllTransactions;
         private System.Windows.Forms.Button cmdWithdrawal;
         private System.Windows.Forms.Button cmdDeposit;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
@@ -634,5 +565,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bttnUnblockCard;
         private System.Windows.Forms.Button bttnAddCard;
+        private System.Windows.Forms.Button bttnClose;
     }
 }

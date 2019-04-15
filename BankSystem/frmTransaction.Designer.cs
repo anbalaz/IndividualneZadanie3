@@ -38,17 +38,17 @@
             this.lblIBANSender = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grpBxReceiver = new System.Windows.Forms.GroupBox();
-            this.grpBxTransaction = new System.Windows.Forms.GroupBox();
-            this.bttnOkIBAN = new System.Windows.Forms.Button();
-            this.txtBxIBAN = new System.Windows.Forms.TextBox();
-            this.lblOwner = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblLimitReceiver = new System.Windows.Forms.Label();
             this.lblSumR = new System.Windows.Forms.Label();
             this.lblLimitR = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblSumReceiver = new System.Windows.Forms.Label();
             this.lblIBANReceiver = new System.Windows.Forms.Label();
+            this.grpBxTransaction = new System.Windows.Forms.GroupBox();
+            this.bttnOkIBAN = new System.Windows.Forms.Button();
+            this.txtBxIBAN = new System.Windows.Forms.TextBox();
+            this.lblOwner = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtBxVS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lmtUpDwnSumToTransfer = new System.Windows.Forms.NumericUpDown();
@@ -161,54 +161,6 @@
             this.grpBxReceiver.TabStop = false;
             this.grpBxReceiver.Text = "RECEIVER";
             // 
-            // grpBxTransaction
-            // 
-            this.grpBxTransaction.Controls.Add(this.bttnOkIBAN);
-            this.grpBxTransaction.Controls.Add(this.txtBxIBAN);
-            this.grpBxTransaction.Controls.Add(this.lblOwner);
-            this.grpBxTransaction.Controls.Add(this.label6);
-            this.grpBxTransaction.Location = new System.Drawing.Point(325, 25);
-            this.grpBxTransaction.Name = "grpBxTransaction";
-            this.grpBxTransaction.Size = new System.Drawing.Size(200, 159);
-            this.grpBxTransaction.TabIndex = 23;
-            this.grpBxTransaction.TabStop = false;
-            this.grpBxTransaction.Text = "RECEIVER";
-            // 
-            // bttnOkIBAN
-            // 
-            this.bttnOkIBAN.Location = new System.Drawing.Point(119, 127);
-            this.bttnOkIBAN.Name = "bttnOkIBAN";
-            this.bttnOkIBAN.Size = new System.Drawing.Size(75, 23);
-            this.bttnOkIBAN.TabIndex = 47;
-            this.bttnOkIBAN.Text = "Ok";
-            this.bttnOkIBAN.UseVisualStyleBackColor = true;
-            this.bttnOkIBAN.Click += new System.EventHandler(this.bttnOkIBAN_Click);
-            // 
-            // txtBxIBAN
-            // 
-            this.txtBxIBAN.Location = new System.Drawing.Point(19, 36);
-            this.txtBxIBAN.Name = "txtBxIBAN";
-            this.txtBxIBAN.Size = new System.Drawing.Size(175, 20);
-            this.txtBxIBAN.TabIndex = 47;
-            // 
-            // lblOwner
-            // 
-            this.lblOwner.AutoSize = true;
-            this.lblOwner.Location = new System.Drawing.Point(16, 64);
-            this.lblOwner.Name = "lblOwner";
-            this.lblOwner.Size = new System.Drawing.Size(49, 13);
-            this.lblOwner.TabIndex = 17;
-            this.lblOwner.Text = "OWNER";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "IBAN";
-            // 
             // lblLimitReceiver
             // 
             this.lblLimitReceiver.AutoSize = true;
@@ -262,6 +214,54 @@
             this.lblIBANReceiver.Size = new System.Drawing.Size(27, 13);
             this.lblIBANReceiver.TabIndex = 18;
             this.lblIBANReceiver.Text = "iban";
+            // 
+            // grpBxTransaction
+            // 
+            this.grpBxTransaction.Controls.Add(this.bttnOkIBAN);
+            this.grpBxTransaction.Controls.Add(this.txtBxIBAN);
+            this.grpBxTransaction.Controls.Add(this.lblOwner);
+            this.grpBxTransaction.Controls.Add(this.label6);
+            this.grpBxTransaction.Location = new System.Drawing.Point(325, 25);
+            this.grpBxTransaction.Name = "grpBxTransaction";
+            this.grpBxTransaction.Size = new System.Drawing.Size(200, 159);
+            this.grpBxTransaction.TabIndex = 23;
+            this.grpBxTransaction.TabStop = false;
+            this.grpBxTransaction.Text = "RECEIVER";
+            // 
+            // bttnOkIBAN
+            // 
+            this.bttnOkIBAN.Location = new System.Drawing.Point(119, 127);
+            this.bttnOkIBAN.Name = "bttnOkIBAN";
+            this.bttnOkIBAN.Size = new System.Drawing.Size(75, 23);
+            this.bttnOkIBAN.TabIndex = 47;
+            this.bttnOkIBAN.Text = "Ok";
+            this.bttnOkIBAN.UseVisualStyleBackColor = true;
+            this.bttnOkIBAN.Click += new System.EventHandler(this.bttnOkIBAN_Click);
+            // 
+            // txtBxIBAN
+            // 
+            this.txtBxIBAN.Location = new System.Drawing.Point(19, 36);
+            this.txtBxIBAN.Name = "txtBxIBAN";
+            this.txtBxIBAN.Size = new System.Drawing.Size(175, 20);
+            this.txtBxIBAN.TabIndex = 47;
+            // 
+            // lblOwner
+            // 
+            this.lblOwner.AutoSize = true;
+            this.lblOwner.Location = new System.Drawing.Point(16, 64);
+            this.lblOwner.Name = "lblOwner";
+            this.lblOwner.Size = new System.Drawing.Size(49, 13);
+            this.lblOwner.TabIndex = 17;
+            this.lblOwner.Text = "OWNER";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "IBAN";
             // 
             // txtBxVS
             // 
@@ -390,6 +390,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 336);
+            this.ControlBox = false;
             this.Controls.Add(this.bttnOkTransaction);
             this.Controls.Add(this.grpBxTransaction);
             this.Controls.Add(this.bttnOk);

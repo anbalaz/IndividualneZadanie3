@@ -36,18 +36,22 @@
             // 
             this.AllTransactionsDtGrdVw.AllowUserToAddRows = false;
             this.AllTransactionsDtGrdVw.AllowUserToDeleteRows = false;
+            this.AllTransactionsDtGrdVw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AllTransactionsDtGrdVw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AllTransactionsDtGrdVw.Location = new System.Drawing.Point(12, 12);
             this.AllTransactionsDtGrdVw.Name = "AllTransactionsDtGrdVw";
             this.AllTransactionsDtGrdVw.ReadOnly = true;
-            this.AllTransactionsDtGrdVw.Size = new System.Drawing.Size(560, 337);
+            this.AllTransactionsDtGrdVw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AllTransactionsDtGrdVw.Size = new System.Drawing.Size(751, 455);
             this.AllTransactionsDtGrdVw.TabIndex = 4;
             // 
             // frmTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(775, 479);
             this.Controls.Add(this.AllTransactionsDtGrdVw);
             this.Name = "frmTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

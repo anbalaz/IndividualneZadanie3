@@ -103,6 +103,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 279);
+            this.ControlBox = false;
             this.Controls.Add(this.bttnCancel);
             this.Controls.Add(this.nmrcTxtBxPassword);
             this.Controls.Add(this.nmrcTxtBxLogin);

@@ -113,7 +113,7 @@
             this.grpBxSender.Size = new System.Drawing.Size(428, 159);
             this.grpBxSender.TabIndex = 48;
             this.grpBxSender.TabStop = false;
-            this.grpBxSender.Text = "SENDER";
+            this.grpBxSender.Text = "WITHDRAWAL";
             // 
             // lblLimitSender
             // 
@@ -174,6 +174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 347);
+            this.ControlBox = false;
             this.Controls.Add(this.bttnOk);
             this.Controls.Add(this.bttnCancel);
             this.Controls.Add(this.lmtUpDwnSumToTransfer);

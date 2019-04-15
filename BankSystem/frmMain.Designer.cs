@@ -129,7 +129,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(259, 326);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Overview1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -141,7 +141,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(259, 326);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Overview2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
@@ -153,7 +153,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(259, 326);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "Overview3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -216,9 +216,12 @@
             // 
             // dtGrdVwTopClients
             // 
+            this.dtGrdVwTopClients.AllowUserToAddRows = false;
+            this.dtGrdVwTopClients.AllowUserToDeleteRows = false;
             this.dtGrdVwTopClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwTopClients.Location = new System.Drawing.Point(7, 52);
             this.dtGrdVwTopClients.Name = "dtGrdVwTopClients";
+            this.dtGrdVwTopClients.ReadOnly = true;
             this.dtGrdVwTopClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwTopClients.Size = new System.Drawing.Size(240, 240);
             this.dtGrdVwTopClients.TabIndex = 12;

@@ -94,7 +94,7 @@ namespace BankSystem
             var clientId = _client.Id;
             if (MessageBox.Show("Are you sure you wat to close this account?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
+                _bankManager.CloseBankAccount(_client.Id);
                 _bankManager.GetCreditCardListByClientId(clientId).ForEach(card => _bankManager.AccessCreditCard(card.CardNumber, 1));
                 RefreshData(clientId);
             }
@@ -170,6 +170,11 @@ namespace BankSystem
             }
             MessageBox.Show(ret);
             RefreshData(_client.Id);
+        }
+
+        private void bttnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

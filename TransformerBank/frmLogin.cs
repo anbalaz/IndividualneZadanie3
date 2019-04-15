@@ -8,7 +8,9 @@ namespace TransformerBank
     {
         private AtmManager _atmManager = new AtmManager();
         private int _count = 0;
+        private int cardNumber;
         public frmLogin()
+
         {
             InitializeComponent();
         }
@@ -24,7 +26,6 @@ namespace TransformerBank
             else
             {
                 CreditCard card = _atmManager.GetCreditCardByCardNumber(login);
-
 
                 if (card.Id == 0)
                 {
@@ -44,12 +45,19 @@ namespace TransformerBank
                 }
                 else
                 {
+                    if (cardNumber != login)
+                    {
+                        cardNumber = login;
+                        _count = 0;
+
+                    }
                     _count++;
                     MessageBox.Show("Wrong password");
 
-                    if (_count >= 3 && _atmManager.AccessCreditCard(card.CardNumber,1))
+                    if (_count >= 3 && _atmManager.AccessCreditCard(card.CardNumber, 1))
                     {
-                        MessageBox.Show("Card has been blocked");
+                        MessageBox.Show("Card has been blocked, goodbye, have a nice day");
+                        Close();
                     }
                 }
             }

@@ -15,9 +15,12 @@ namespace BankSystem
 
         private void cmdManageAccount_Click(object sender, EventArgs e)
         {
-            if (_bankManager.ClientId(txtBxIdentity.Text)!=0)
+            string clientIdentityCard = (searchedClientsDtGrdVw.SelectedCells[1].Value).ToString();
+            int identity = _bankManager.ClientId(clientIdentityCard);
+
+            if (identity != 0 && identity != BankManager.BANK_IDENTIY)
             {
-                using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxIdentity.Text)))
+                using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(clientIdentityCard)))
                 {
                     newForm.ShowDialog();
                 }

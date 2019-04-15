@@ -103,7 +103,6 @@ namespace BankSystem
         public BankAccount GetBankAccountByClientId(int clientId)
         {
             return _bankAccountRepository.GetBankAccountByClientId(clientId);
-
         }
 
         public List<CreditCard> GetCreditCardListByClientId(int clientId)

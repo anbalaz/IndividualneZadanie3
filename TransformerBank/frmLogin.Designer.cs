@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.nmrcTxtBxLogin = new Controls.NumericTextBox();
             this.nmrcTxtBxPassword = new Controls.NumericTextBox();
+            this.bttnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -56,7 +57,7 @@
             // 
             // confirmButtonbttn
             // 
-            this.confirmButtonbttn.Location = new System.Drawing.Point(159, 166);
+            this.confirmButtonbttn.Location = new System.Drawing.Point(252, 188);
             this.confirmButtonbttn.Name = "confirmButtonbttn";
             this.confirmButtonbttn.Size = new System.Drawing.Size(75, 23);
             this.confirmButtonbttn.TabIndex = 5;
@@ -87,11 +88,22 @@
             this.nmrcTxtBxPassword.Size = new System.Drawing.Size(100, 20);
             this.nmrcTxtBxPassword.TabIndex = 12;
             // 
+            // bttnCancel
+            // 
+            this.bttnCancel.Location = new System.Drawing.Point(104, 188);
+            this.bttnCancel.Name = "bttnCancel";
+            this.bttnCancel.Size = new System.Drawing.Size(75, 23);
+            this.bttnCancel.TabIndex = 13;
+            this.bttnCancel.Text = "Cancel";
+            this.bttnCancel.UseVisualStyleBackColor = true;
+            this.bttnCancel.Click += new System.EventHandler(this.bttnCancel_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 279);
+            this.Controls.Add(this.bttnCancel);
             this.Controls.Add(this.nmrcTxtBxPassword);
             this.Controls.Add(this.nmrcTxtBxLogin);
             this.Controls.Add(this.label3);
@@ -113,5 +125,6 @@
         private System.Windows.Forms.Label label3;
         private Controls.NumericTextBox nmrcTxtBxLogin;
         private Controls.NumericTextBox nmrcTxtBxPassword;
+        private System.Windows.Forms.Button bttnCancel;
     }
 }

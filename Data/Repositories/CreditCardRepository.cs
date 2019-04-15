@@ -21,6 +21,10 @@ namespace Data.Repositories
         private string _SelectCreditCardByCardNumber = @"	SELECT Id, CardNumber, PasswordCard , IsCardBlocked, ExpirationDate, CreationCardDate
 	                                                        FROM CreditCard
 	                                                        WHERE CardNumber=@cardNumber";
+
+        private string _updateCardToBlock = @"	UPDATE CreditCard
+	                                            SET IsCardBlocked=1
+	                                            WHERE CardNumber=@cardNumber";
         public List<CreditCard> GeListData()
         {
             List<CreditCard> creditCards = new List<CreditCard>();
@@ -128,6 +132,28 @@ namespace Data.Repositories
                     }
                 }
                 return creditCard;
+            }
+        }
+
+        public int UpdateCardToBlock(int cardNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _updateCardToBlock;
+                    command.Parameters.Add("@cardNumber", SqlDbType.Int).Value = cardNumber;
+                    try
+                    {
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return 0;
             }
         }
     }

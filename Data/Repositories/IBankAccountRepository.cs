@@ -10,5 +10,6 @@ namespace Data.Repositories
         int CloseBankAccount(int clientId);
         int UpdatebankAccountFrom(int transactionId, decimal sum);
         int UpdatebankAccountTo(int transactionId, decimal sum);
+        BankAccount SelectBankAccountByCardNumber(int cardNumber);
     }
 }

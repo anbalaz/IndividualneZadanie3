@@ -59,11 +59,11 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmWithdrawalDeposit.cs">
+    <Compile Include="frmWithdrawal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmWithdrawalDeposit.Designer.cs">
-      <DependentUpon>frmWithdrawalDeposit.cs</DependentUpon>
+    <Compile Include="frmWithdrawal.Designer.cs">
+      <DependentUpon>frmWithdrawal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +73,8 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmWithdrawalDeposit.resx">
-      <DependentUpon>frmWithdrawalDeposit.cs</DependentUpon>
+    <EmbeddedResource Include="frmWithdrawal.resx">
+      <DependentUpon>frmWithdrawal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

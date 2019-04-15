@@ -100,7 +100,6 @@ namespace Data.Repositories
                 }
                 return 0;
             }
-
         }
 
         public int UpdateMessage(string fieldName, int transactionId, string message)

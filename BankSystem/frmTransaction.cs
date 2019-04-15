@@ -98,7 +98,7 @@ namespace BankSystem
             }
             else if (_sender.Id == 1)
             {
-                ret = "Withdrawal";
+                ret = "Bank withdrawal";
             }
             else
             {

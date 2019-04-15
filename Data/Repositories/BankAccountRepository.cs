@@ -41,6 +41,15 @@ namespace Data.Repositories
                                                   			FROM Transactions
                                                   			WHERE Id=@transactionId);";
 
+        private string _selectBankAccountByCardNumber= @"SELECT 
+                                                         ba.Id
+                                                        ,IBAN 
+                                                        ,CreationAccountDate
+                                                        ,TerminationDate
+                                                        ,CurrentSum
+                                                        ,Limit FROM BankAccount as ba
+                                                        INNER JOIN CreditCard as cc ON ba.Id= cc.BankAccountId
+                                                        WHERE cc.CardNumber =@cardNumber;";
 
         public int CreateBankAccount(int clientId, string IBAN, decimal limit)
         {
@@ -81,6 +90,49 @@ namespace Data.Repositories
                 {
                     command.CommandText = _getBankAccountByClientId;
                     command.Parameters.Add("@id", SqlDbType.Int).Value = clientId;
+                    try
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            {
+                                while (reader.Read())
+                                {
+                                    bankAccount.Id = reader.GetInt32(0);
+                                    bankAccount.IBAN = reader.GetString(1);
+                                    bankAccount.CreationAccountDate = reader.GetDateTime(2);
+                                    if (!reader.IsDBNull(3))
+                                    {
+                                        bankAccount.TerminationDate = reader.GetDateTime(3);
+                                    }
+                                    else
+                                    {
+                                        bankAccount.TerminationDate = DateTime.MinValue;
+                                    }
+                                    bankAccount.CurrentSum = reader.GetDecimal(4);
+                                    bankAccount.Limit = reader.GetDecimal(5);
+                                }
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return bankAccount;
+            }
+        }
+
+        public BankAccount SelectBankAccountByCardNumber(int cardNumber)
+        {
+            BankAccount bankAccount = new BankAccount();
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _selectBankAccountByCardNumber;
+                    command.Parameters.Add("@cardNumber", SqlDbType.Int).Value = cardNumber;
                     try
                     {
                         using (SqlDataReader reader = command.ExecuteReader())

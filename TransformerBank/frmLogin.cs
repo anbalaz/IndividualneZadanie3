@@ -25,29 +25,39 @@ namespace TransformerBank
             {
                 CreditCard card = _atmManager.GetCreditCardByCardNumber(login);
 
-                if (card.Id != 0 && card.PasswordCard.Equals(nmrcTxtBxPassword.Text) )
+
+                if (card.Id == 0)
+                {
+                    MessageBox.Show("WrongCard Number");
+                }
+                else if (card.ExpirationDate <= DateTime.Now || card.CreationCardDate >= DateTime.Now || card.IsCardBlocked)
+                {
+                    MessageBox.Show("Card is not Valid, please check with BankIslam Personel");
+                }
+                else if (card.Id != 0 && card.PasswordCard.Equals(nmrcTxtBxPassword.Text))
                 {
                     Close();
-                    using (frmWithdrawalDeposit newForm = new frmWithdrawalDeposit())
+                    using (frmWithdrawal newForm = new frmWithdrawal(card.CardNumber))
                     {
                         newForm.ShowDialog();
                     }
                 }
-                else if (card.Id == 0)
-                {
-                    MessageBox.Show("WrongCard Number");
-                }
-                else if (card.ExpirationDate < DateTime.Now || card.CreationCardDate > DateTime.Now || card.IsCardBlocked)
-                {
-                    MessageBox.Show("Card is not Valid, please check with BankIslam Personel");
-                    Close();
-                }
                 else
                 {
-                    MessageBox.Show("Wrong password");
                     _count++;
+                    MessageBox.Show("Wrong password");
+
+                    if (_count >= 3 && _atmManager.BlockCreditCard(card.CardNumber))
+                    {
+                        MessageBox.Show("Card has been blocked");
+                    }
                 }
             }
+        }
+        private void bttnCancel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Goodbye, have a nice day");
+            Close();
         }
     }
 }

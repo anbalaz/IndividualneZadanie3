@@ -95,7 +95,7 @@ namespace BankSystem
             if (MessageBox.Show("Are you sure you wat to close this account?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
-                _bankManager.GetCreditCardListByClientId(clientId).ForEach(card => _bankManager.AccessCreditCard(card.CardNumber,1));
+                _bankManager.GetCreditCardListByClientId(clientId).ForEach(card => _bankManager.AccessCreditCard(card.CardNumber, 1));
                 RefreshData(clientId);
             }
         }
@@ -132,20 +132,22 @@ namespace BankSystem
                 cmdNewTransaction.Enabled = false;
                 cmdCloseAccount.Enabled = false;
                 bttnUnblockCard.Enabled = false;
+                bttnAddCard.Enabled = false;
             }
         }
 
         private void InitializeCreditCardsgrid(int clientId)
 
         {
-            dtGrdVwCreditCards.DataSource = _bankManager.GetCreditCardListByClientId(clientId);
+            dtGrdVwCreditCards.DataSource = _bankManager.GetCreditCardsByClientId(clientId);
+            dtGrdVwCreditCards.DataMember = "Cards";
         }
 
         private void bttnUnblockCard_Click(object sender, EventArgs e)
         {
-            int cardToUpdate = Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[2].Value);
+            int cardToUpdate = Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[1].Value);
 
-            if (Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[5].Value) > 0)
+            if (Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[4].Value) > 0)
             {
                 _bankManager.AccessCreditCard(cardToUpdate, 0);
             }
@@ -153,6 +155,20 @@ namespace BankSystem
             {
                 _bankManager.AccessCreditCard(cardToUpdate, 1);
             }
+            RefreshData(_client.Id);
+        }
+
+        private void bttnAddCard_Click(object sender, EventArgs e)
+        {
+            string ret = "Card was not created";
+            Random random = new Random();
+            int password = random.Next(1000,9999);
+            int cardNumber = random.Next(10000000,99999999);
+            if (_bankManager.CreateCreditCardByAccountId(_bankAccount.Id, cardNumber, password) > 0)
+            {
+                ret = "Card was  created";
+            }
+            MessageBox.Show(ret);
             RefreshData(_client.Id);
         }
     }

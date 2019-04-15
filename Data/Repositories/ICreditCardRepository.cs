@@ -1,13 +1,15 @@
 ﻿using Data.Models;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Data.Repositories
 {
     public interface ICreditCardRepository
     {
-        List<CreditCard> GeListData();
         List<CreditCard> GetCreditCardListByClientId(int clientId);
+        DataSet SelectCreditCardByCardByClientId(int clientId);
         CreditCard SelectCreditCardByCardNumber(int cardNumber);
+        int InsertCreditCardByBankAccountId(int bankAccountId, int cardNumber, int cardPassword);
         int UpdateCardBlockUnblock(int cardNumber,int blockUnblock);
     }
 }

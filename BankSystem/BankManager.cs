@@ -111,6 +111,11 @@ namespace BankSystem
             return _creditCardRepository.GetCreditCardListByClientId(clientId);
         }
 
+        public DataSet GetCreditCardsByClientId(int clientId)
+        {
+            return _creditCardRepository.SelectCreditCardByCardByClientId(clientId);
+        }
+
         public DataSet GetTransactionsByClientId(int clientId)
         {
             return _transactionsRepository.GetTransactionsByClientId(clientId);
@@ -189,6 +194,11 @@ namespace BankSystem
         public BankAccount GetBankAccountByIBAN(string IBAN)
         {
             return _bankAccountRepository.SelectBankAccountByIBAN(IBAN);
+        }
+
+        public int CreateCreditCardByAccountId(int bankAccountId, int cardNumber, int cardPassword)
+        {
+            return _creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, cardPassword);
         }
     }
 }

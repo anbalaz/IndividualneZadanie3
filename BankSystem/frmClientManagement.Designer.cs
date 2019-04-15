@@ -73,6 +73,7 @@
             this.dtGrdVwCreditCards = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.bttnUnblockCard = new System.Windows.Forms.Button();
+            this.bttnAddCard = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwCreditCards)).BeginInit();
@@ -508,6 +509,9 @@
             // 
             // dtGrdVwCreditCards
             // 
+            this.dtGrdVwCreditCards.AllowUserToAddRows = false;
+            this.dtGrdVwCreditCards.AllowUserToDeleteRows = false;
+            this.dtGrdVwCreditCards.AllowUserToOrderColumns = true;
             this.dtGrdVwCreditCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGrdVwCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -515,7 +519,7 @@
             this.dtGrdVwCreditCards.Name = "dtGrdVwCreditCards";
             this.dtGrdVwCreditCards.ReadOnly = true;
             this.dtGrdVwCreditCards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(958, 99);
+            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(652, 99);
             this.dtGrdVwCreditCards.TabIndex = 39;
             // 
             // label1
@@ -529,7 +533,7 @@
             // 
             // bttnUnblockCard
             // 
-            this.bttnUnblockCard.Location = new System.Drawing.Point(676, 310);
+            this.bttnUnblockCard.Location = new System.Drawing.Point(548, 306);
             this.bttnUnblockCard.Name = "bttnUnblockCard";
             this.bttnUnblockCard.Size = new System.Drawing.Size(112, 23);
             this.bttnUnblockCard.TabIndex = 40;
@@ -537,11 +541,22 @@
             this.bttnUnblockCard.UseVisualStyleBackColor = true;
             this.bttnUnblockCard.Click += new System.EventHandler(this.bttnUnblockCard_Click);
             // 
+            // bttnAddCard
+            // 
+            this.bttnAddCard.Location = new System.Drawing.Point(397, 306);
+            this.bttnAddCard.Name = "bttnAddCard";
+            this.bttnAddCard.Size = new System.Drawing.Size(112, 23);
+            this.bttnAddCard.TabIndex = 41;
+            this.bttnAddCard.Text = "AddCard";
+            this.bttnAddCard.UseVisualStyleBackColor = true;
+            this.bttnAddCard.Click += new System.EventHandler(this.bttnAddCard_Click);
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 579);
+            this.Controls.Add(this.bttnAddCard);
             this.Controls.Add(this.bttnUnblockCard);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtGrdVwCreditCards);
@@ -618,5 +633,6 @@
         private System.Windows.Forms.DataGridView dtGrdVwCreditCards;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bttnUnblockCard;
+        private System.Windows.Forms.Button bttnAddCard;
     }
 }

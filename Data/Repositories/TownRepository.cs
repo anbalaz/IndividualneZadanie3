@@ -1,12 +1,20 @@
 ﻿using Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Data.Repositories
 {
-    public class TownRepository:ITownRepository
+    public class TownRepository : ITownRepository
     {
+
+        private string _topTowns = @" SELECT TOP 5 t.Name AS Town, count(c.Id) as [Number of clients] FROM Client as c
+                                      INNER JOIN Town as t ON c.TownId=t.Id
+                                      INNER JOIN BankAccount as ba ON c.Id=ba.ClientId
+                                      WHERE ba.id <>1 AND ba.TerminationDate IS Null
+                                      Group BY t.Name
+                                      ORDER BY [Number of clients] DESC";
 
         public List<Town> GeListData()
         {
@@ -27,8 +35,8 @@ namespace Data.Repositories
                                 while (reader.Read())
                                 {
                                     Country country = new Country();
-                                    country.Id= reader.GetInt32(0);
-                                    country.Name= reader.GetString(1);
+                                    country.Id = reader.GetInt32(0);
+                                    country.Name = reader.GetString(1);
 
 
                                     Town town = new Town();
@@ -47,6 +55,30 @@ namespace Data.Repositories
                     }
                 }
                 return towns;
+            }
+        }
+
+        public DataSet SelectTopTowns()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING);
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = _topTowns;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(ds, "Towns");
+                DataTable dt = ds.Tables["Towns"];
+
+                return ds;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Exception occured: \n{ ex}");
+                return ds;
             }
         }
     }

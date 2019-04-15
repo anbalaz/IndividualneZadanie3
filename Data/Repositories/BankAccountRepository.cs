@@ -60,6 +60,16 @@ namespace Data.Repositories
                                                         INNER JOIN CreditCard as cc ON ba.Id= cc.BankAccountId
                                                         WHERE cc.CardNumber =@cardNumber;";
 
+        private string _selectSumOfMoneyOnAccounts = @"SELECT SUM(CurrentSum)[Sum on accounts] from BankAccount
+                                                     where id <>1 AND TerminationDate IS Null;";
+
+        private string _selectCountOfClients = @" SELECT COUNT(Id)[Number of valid accounts] from BankAccount
+                                                 where id <>1 AND TerminationDate IS Null;";
+
+        private string _selectTopClients = @" SELECT TOP  10 IBAN,CurrentSum FROM BankAccount
+                                              WHERE id <>1 AND TerminationDate IS Null
+                                              ORDER BY CurrentSum DESC;";
+
         public int CreateBankAccount(int clientId, string IBAN, decimal limit)
         {
             DateTime time = DateTime.Now;
@@ -314,6 +324,72 @@ namespace Data.Repositories
                     }
                 }
                 return bankAccount;
+            }
+        }
+
+        public decimal SelectSumOfMoneyOnAccounts()
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _selectSumOfMoneyOnAccounts;
+                    try
+                    {
+                        return Convert.ToDecimal(command.ExecuteScalar());
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return 0;
+            }
+        }
+
+        public int SelectCountOfClients()
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _selectCountOfClients;
+                    try
+                    {
+                        return Convert.ToInt32(command.ExecuteScalar());
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return 0;
+            }
+        }
+
+        public DataSet SelectTopAccounts()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING);
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = _selectTopClients;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(ds, "Clients");
+                DataTable dt = ds.Tables["Clients"];
+
+                return ds;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Exception occured: \n{ ex}");
+                return ds;
             }
         }
     }

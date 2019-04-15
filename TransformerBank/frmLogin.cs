@@ -62,6 +62,7 @@ namespace TransformerBank
                 }
             }
         }
+
         private void bttnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Goodbye, have a nice day");

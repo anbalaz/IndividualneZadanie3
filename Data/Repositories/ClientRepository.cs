@@ -68,6 +68,12 @@ namespace Data.Repositories
                                                INNER JOIN BankAccount as ba ON c.Id= ba.ClientId
                                                WHERE ba.IBAN =@IBAN;";
 
+        private string _selectNewclients = @"Select MONTH(ba.CreationAccountDate) as [MONTH], COUNT(*) AS [COUNT] 
+                                             from BankAccount ba
+                                             where ba.CreationAccountDate >= DATEADD(MONTH,-6,GETDATE()) AND id <>1 AND TerminationDate IS Null
+                                             group by MONTH(ba.CreationAccountDate)
+                                             ORDER BY [MONTH] DESC";
+
         public int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -279,6 +285,30 @@ namespace Data.Repositories
                     }
                 }
                 return client;
+            }
+        }
+
+        public DataSet SelectNewclients()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING);
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = _selectNewclients;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(ds, "NewClients");
+                DataTable dt = ds.Tables["NewClients"];
+
+                return ds;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Exception occured: \n{ ex}");
+                return ds;
             }
         }
     }

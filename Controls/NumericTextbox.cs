@@ -58,6 +58,7 @@ namespace Controls
             }
         }
 
+
         /// <summary>
         /// Evaluates whether number is valid for current settings.
         /// </summary>

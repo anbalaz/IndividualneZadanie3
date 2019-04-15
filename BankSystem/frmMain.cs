@@ -17,6 +17,7 @@ namespace BankSystem
         public frmMain()
         {
             InitializeComponent();
+            RefreshData();
         }
 
         private void cmdFindClient_Click(object sender, EventArgs e)
@@ -57,6 +58,26 @@ namespace BankSystem
             {
                 newForm.ShowDialog();
             }
+        }
+
+
+        public void RefreshData()
+        {
+            lblSumMoney.Text= _bankManager.GetSumOfMoneyOnAccounts().ToString();
+            lblNumberOfClients.Text = _bankManager.GetCountOfClients().ToString();
+            dtGrdVwTopTowns.DataSource = _bankManager.GetTopTowns();
+            dtGrdVwTopTowns.DataMember = "Towns";
+            dtGrdVwTopClients.DataSource = _bankManager.GetTopClients();
+            dtGrdVwTopClients.DataMember = "Clients";
+            dtGrdVwMonths.DataSource = _bankManager.GetNewclients();
+            dtGrdVwMonths.DataMember = "NewClients";
+
+
+        }
+
+        private void bttnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using System.Data;
 
 namespace Data.Repositories
 {
@@ -12,5 +13,8 @@ namespace Data.Repositories
         int UpdatebankAccountTo(int transactionId, decimal sum);
         BankAccount SelectBankAccountByCardNumber(int cardNumber);
         BankAccount SelectBankAccountByIBAN(string IBAN);
+        decimal SelectSumOfMoneyOnAccounts();
+        int SelectCountOfClients();
+        DataSet SelectTopAccounts();
     }
 }

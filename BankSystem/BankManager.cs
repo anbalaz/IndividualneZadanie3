@@ -53,7 +53,21 @@ namespace BankSystem
             }
             return ret;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="townId"></param>
+        /// <param name="identityCard"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="street"></param>
+        /// <param name="streetNumber"></param>
+        /// <param name="postalCode"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
+        /// <param name="limit"></param>
+        /// <returns>returns strng about how if was the update successfull or where it failed</returns>
         public String UpdateClientAndBankAccount(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email, decimal limit)
         {
             string ret;
@@ -84,7 +98,11 @@ namespace BankSystem
         {
             return _townRepository.GeListData();
         }
-
+        /// <summary>
+        /// Search through clientIdentityCard, IBAN and LastName
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
         public DataSet GetSearchedClients(string searchString)
         {
             return _clientRepository.GetClientSearch(searchString);
@@ -125,7 +143,11 @@ namespace BankSystem
         {
             return _transactionsRepository.GetAllTransactions();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <returns>returns string if the closing ws succsessfull</returns>
         public String CloseBankAccount(int clientId)
         {
             string ret;
@@ -135,11 +157,22 @@ namespace BankSystem
             }
             else
             {
-                ret = "Cant close account";
+                ret = "Can not close account";
             }
             return ret;
         }
-
+        /// <summary>
+        /// if transaction is successfull but there is problem with accounts it delete last transaction
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="sum"></param>
+        /// <param name="category"></param>
+        /// <param name="VS"></param>
+        /// <param name="CS"></param>
+        /// <param name="SS"></param>
+        /// <param name="MessageForReceiver"></param>
+        /// <returns>returns statement how did the trasaction go</returns>
         public String CreateTransaction(int from, int to, decimal sum, string category, string VS, string CS, string SS, string MessageForReceiver)
         {
             string ret;
@@ -175,12 +208,23 @@ namespace BankSystem
             }
             return ret;
         }
-
-        public bool AccessCreditCard(int cardNumber,int blockUnblock)
+        /// <summary>
+        /// blocks or unblocks the card -0 unblocks, 1- blocks
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <param name="blockUnblock"></param>
+        /// <returns></returns>
+        public bool AccessCreditCard(int cardNumber, int blockUnblock)
         {
             return _creditCardRepository.UpdateCardBlockUnblock(cardNumber, blockUnblock) > 0;
         }
-
+        /// <summary>
+        /// chceks if sum you want to take out of account is not over client s limit
+        /// </summary>
+        /// <param name="curSum"></param>
+        /// <param name="limit"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool IsTransactionUnderLimit(decimal curSum, decimal limit, decimal transaction)
         {
             return (curSum + limit) >= transaction;
@@ -199,6 +243,31 @@ namespace BankSystem
         public int CreateCreditCardByAccountId(int bankAccountId, int cardNumber, int cardPassword)
         {
             return _creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, cardPassword);
+        }
+
+        public decimal GetSumOfMoneyOnAccounts()
+        {
+            return _bankAccountRepository.SelectSumOfMoneyOnAccounts();
+        }
+
+        public int GetCountOfClients()
+        {
+            return _bankAccountRepository.SelectCountOfClients();
+        }
+
+        public DataSet GetTopTowns()
+        {
+            return _townRepository.SelectTopTowns();
+        }
+
+        public DataSet GetTopClients()
+        {
+            return _bankAccountRepository.SelectTopAccounts();
+        }
+
+        public DataSet GetNewclients()
+        {
+            return _clientRepository.SelectNewclients();
         }
     }
 }

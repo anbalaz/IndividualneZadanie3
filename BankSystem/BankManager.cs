@@ -164,9 +164,20 @@ namespace BankSystem
             }
             else
             {
+                _transactionsRepository.DeleteTransaction(transactionId);
                 ret = "Transaction was unsucssessfull";
             }
             return ret;
+        }
+
+        public bool AccessCreditCard(int cardNumber,int blockUnblock)
+        {
+            return _creditCardRepository.UpdateCardBlockUnblock(cardNumber, blockUnblock) > 0;
+        }
+
+        public bool IsTransactionUnderLimit(decimal curSum, decimal limit, decimal transaction)
+        {
+            return (curSum + limit) >= transaction;
         }
     }
 }

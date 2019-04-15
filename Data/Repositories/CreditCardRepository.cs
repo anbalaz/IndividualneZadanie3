@@ -23,7 +23,7 @@ namespace Data.Repositories
 	                                                        WHERE CardNumber=@cardNumber";
 
         private string _updateCardToBlock = @"	UPDATE CreditCard
-	                                            SET IsCardBlocked=1
+	                                            SET IsCardBlocked=@blockUnblock
 	                                            WHERE CardNumber=@cardNumber";
         public List<CreditCard> GeListData()
         {
@@ -135,7 +135,7 @@ namespace Data.Repositories
             }
         }
 
-        public int UpdateCardToBlock(int cardNumber)
+        public int UpdateCardBlockUnblock(int cardNumber, int blockUnblock)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
@@ -144,6 +144,7 @@ namespace Data.Repositories
                 {
                     command.CommandText = _updateCardToBlock;
                     command.Parameters.Add("@cardNumber", SqlDbType.Int).Value = cardNumber;
+                    command.Parameters.Add("@blockUnblock", SqlDbType.Bit).Value = blockUnblock;
                     try
                     {
                         return command.ExecuteNonQuery();

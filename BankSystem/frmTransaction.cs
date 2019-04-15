@@ -8,6 +8,8 @@ namespace BankSystem
         private BankManager _bankManager = new BankManager();
         private BankAccount _sender;
         private BankAccount _receiver;
+        private int _senderId;
+        private int _receiverId;
 
         public frmTransaction(int bankAccountFrom)
         {
@@ -17,15 +19,16 @@ namespace BankSystem
         public frmTransaction(int bankAccountFrom, int bankAccountTo)
         {
             InitializeComponent();
-            InitializeDataDepositWithdrawal(bankAccountFrom, bankAccountTo);
+
+            _senderId = bankAccountFrom;
+            _receiverId = bankAccountTo;
+            Refreshdata(bankAccountFrom, bankAccountTo);
         }
 
-
-        public void InitializeDataDepositWithdrawal(int bankAccountFrom, int bankAccountTo)
+        public void Refreshdata(int bankAccountFrom, int bankAccountTo)
         {
             _sender = _bankManager.GetBankAccountByClientId(bankAccountFrom);
             _receiver = _bankManager.GetBankAccountByClientId(bankAccountTo);
-
             lblIBANSender.Text = _sender.IBAN;
             lblSumSender.Text = _sender.CurrentSum.ToString();
             lblLimitSender.Text = _sender.Limit.ToString();
@@ -42,8 +45,6 @@ namespace BankSystem
             lblCS.Visible = false;
             lblSS.Visible = false;
             lblMessage.Visible = false;
-
-
 
             if (_receiver.Id == 1)
             {
@@ -70,23 +71,30 @@ namespace BankSystem
 
         private void bttnOk_Click(object sender, System.EventArgs e)
         {
-            if (lmtUpDwnSumToTransfer.Value > 0)
+            string ret;
+
+            if (!_bankManager.IsTransactionUnderLimit(_sender.CurrentSum, _sender.Limit, lmtUpDwnSumToTransfer.Value))
             {
-                MessageBox.Show(_bankManager.CreateTransaction(_sender.Id,
-                                                _receiver.Id,
-                                                lmtUpDwnSumToTransfer.Value,
-                                                Category(),
-                                                txtBxVS.Text,
-                                                txtBxCS.Text,
-                                                txtBxSS.Text,
-                                                txtBxMessage.Text
-                                                ));
-                Close();
+                ret = "Insufficient funds";
+            }
+            else if (lmtUpDwnSumToTransfer.Value > 0)
+            {
+                ret = _bankManager.CreateTransaction(_sender.Id,
+                                               _receiver.Id,
+                                               lmtUpDwnSumToTransfer.Value,
+                                               Category(),
+                                               txtBxVS.Text,
+                                               txtBxCS.Text,
+                                               txtBxSS.Text,
+                                               txtBxMessage.Text
+                                               );
             }
             else
             {
-                MessageBox.Show("Please insert value");
+                ret = "Please insert value";
             }
+            Refreshdata(_senderId,_receiverId);
+            MessageBox.Show(ret);
         }
 
         private string Category()

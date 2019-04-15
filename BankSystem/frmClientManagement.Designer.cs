@@ -72,6 +72,7 @@
             this.lblCurrentSum = new System.Windows.Forms.Label();
             this.dtGrdVwCreditCards = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.bttnUnblockCard = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwCreditCards)).BeginInit();
@@ -79,7 +80,7 @@
             // 
             // cmdUpdate
             // 
-            this.cmdUpdate.Location = new System.Drawing.Point(15, 330);
+            this.cmdUpdate.Location = new System.Drawing.Point(15, 360);
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(112, 23);
             this.cmdUpdate.TabIndex = 4;
@@ -89,7 +90,7 @@
             // 
             // cmdNewTransaction
             // 
-            this.cmdNewTransaction.Location = new System.Drawing.Point(397, 399);
+            this.cmdNewTransaction.Location = new System.Drawing.Point(397, 429);
             this.cmdNewTransaction.Name = "cmdNewTransaction";
             this.cmdNewTransaction.Size = new System.Drawing.Size(112, 23);
             this.cmdNewTransaction.TabIndex = 5;
@@ -109,7 +110,7 @@
             // 
             // cmdAllTransactions
             // 
-            this.cmdAllTransactions.Location = new System.Drawing.Point(397, 328);
+            this.cmdAllTransactions.Location = new System.Drawing.Point(397, 358);
             this.cmdAllTransactions.Name = "cmdAllTransactions";
             this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 8;
@@ -129,7 +130,7 @@
             // 
             // cmdDeposit
             // 
-            this.cmdDeposit.Location = new System.Drawing.Point(17, 399);
+            this.cmdDeposit.Location = new System.Drawing.Point(17, 429);
             this.cmdDeposit.Name = "cmdDeposit";
             this.cmdDeposit.Size = new System.Drawing.Size(112, 23);
             this.cmdDeposit.TabIndex = 10;
@@ -185,7 +186,7 @@
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label7.Location = new System.Drawing.Point(515, 306);
+            this.label7.Location = new System.Drawing.Point(515, 336);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(233, 60);
             this.label7.TabIndex = 16;
@@ -196,7 +197,7 @@
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(515, 392);
+            this.label8.Location = new System.Drawing.Point(515, 422);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(233, 60);
             this.label8.TabIndex = 17;
@@ -206,7 +207,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(357, 25);
+            this.label10.Location = new System.Drawing.Point(421, 25);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(103, 13);
             this.label10.TabIndex = 22;
@@ -215,7 +216,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(669, 25);
+            this.label13.Location = new System.Drawing.Point(719, 25);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 13);
             this.label13.TabIndex = 27;
@@ -233,7 +234,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(554, 25);
+            this.label12.Location = new System.Drawing.Point(618, 25);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(95, 13);
             this.label12.TabIndex = 25;
@@ -242,7 +243,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(466, 25);
+            this.label14.Location = new System.Drawing.Point(530, 25);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(82, 13);
             this.label14.TabIndex = 23;
@@ -269,7 +270,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(301, 25);
+            this.label17.Location = new System.Drawing.Point(347, 25);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 13);
             this.label17.TabIndex = 20;
@@ -278,7 +279,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(254, 25);
+            this.label18.Location = new System.Drawing.Point(277, 25);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 13);
             this.label18.TabIndex = 18;
@@ -287,7 +288,7 @@
             // lblStreetNumber
             // 
             this.lblStreetNumber.AutoSize = true;
-            this.lblStreetNumber.Location = new System.Drawing.Point(357, 48);
+            this.lblStreetNumber.Location = new System.Drawing.Point(421, 48);
             this.lblStreetNumber.Name = "lblStreetNumber";
             this.lblStreetNumber.Size = new System.Drawing.Size(103, 13);
             this.lblStreetNumber.TabIndex = 33;
@@ -296,7 +297,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(669, 48);
+            this.lblEmail.Location = new System.Drawing.Point(719, 48);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(39, 13);
             this.lblEmail.TabIndex = 36;
@@ -305,7 +306,7 @@
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Location = new System.Drawing.Point(554, 48);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(618, 48);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(95, 13);
             this.lblPhoneNumber.TabIndex = 35;
@@ -323,7 +324,7 @@
             // lblPostalCode
             // 
             this.lblPostalCode.AutoSize = true;
-            this.lblPostalCode.Location = new System.Drawing.Point(466, 48);
+            this.lblPostalCode.Location = new System.Drawing.Point(530, 48);
             this.lblPostalCode.Name = "lblPostalCode";
             this.lblPostalCode.Size = new System.Drawing.Size(82, 13);
             this.lblPostalCode.TabIndex = 34;
@@ -341,7 +342,7 @@
             // lblStreet
             // 
             this.lblStreet.AutoSize = true;
-            this.lblStreet.Location = new System.Drawing.Point(301, 48);
+            this.lblStreet.Location = new System.Drawing.Point(347, 48);
             this.lblStreet.Name = "lblStreet";
             this.lblStreet.Size = new System.Drawing.Size(50, 13);
             this.lblStreet.TabIndex = 32;
@@ -359,7 +360,7 @@
             // lblTown
             // 
             this.lblTown.AutoSize = true;
-            this.lblTown.Location = new System.Drawing.Point(254, 48);
+            this.lblTown.Location = new System.Drawing.Point(277, 48);
             this.lblTown.Name = "lblTown";
             this.lblTown.Size = new System.Drawing.Size(41, 13);
             this.lblTown.TabIndex = 31;
@@ -389,7 +390,7 @@
             this.groupBox1.Controls.Add(this.lblTown);
             this.groupBox1.Location = new System.Drawing.Point(15, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(773, 73);
+            this.groupBox1.Size = new System.Drawing.Size(955, 73);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CLIENT";
@@ -410,7 +411,7 @@
             this.groupBox2.Controls.Add(this.lblCurrentSum);
             this.groupBox2.Location = new System.Drawing.Point(12, 87);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 73);
+            this.groupBox2.Size = new System.Drawing.Size(958, 73);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "BANK ACCOUNT";
@@ -420,9 +421,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(489, 25);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(79, 13);
+            this.label20.Size = new System.Drawing.Size(87, 13);
             this.label20.TabIndex = 18;
-            this.label20.Text = "CURENT SUM";
+            this.label20.Text = "CURRENT SUM";
             // 
             // label22
             // 
@@ -454,7 +455,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(205, 25);
+            this.label26.Location = new System.Drawing.Point(183, 25);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(149, 13);
             this.label26.TabIndex = 13;
@@ -463,7 +464,7 @@
             // lblCreationDate
             // 
             this.lblCreationDate.AutoSize = true;
-            this.lblCreationDate.Location = new System.Drawing.Point(205, 48);
+            this.lblCreationDate.Location = new System.Drawing.Point(183, 48);
             this.lblCreationDate.Name = "lblCreationDate";
             this.lblCreationDate.Size = new System.Drawing.Size(94, 13);
             this.lblCreationDate.TabIndex = 28;
@@ -492,9 +493,9 @@
             this.lblTerminationDate.AutoSize = true;
             this.lblTerminationDate.Location = new System.Drawing.Point(360, 48);
             this.lblTerminationDate.Name = "lblTerminationDate";
-            this.lblTerminationDate.Size = new System.Drawing.Size(114, 13);
+            this.lblTerminationDate.Size = new System.Drawing.Size(61, 13);
             this.lblTerminationDate.TabIndex = 30;
-            this.lblTerminationDate.Text = "TERMINATION DATE";
+            this.lblTerminationDate.Text = "- - - - - - - - - ";
             // 
             // lblCurrentSum
             // 
@@ -512,7 +513,9 @@
             this.dtGrdVwCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwCreditCards.Location = new System.Drawing.Point(12, 194);
             this.dtGrdVwCreditCards.Name = "dtGrdVwCreditCards";
-            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(776, 99);
+            this.dtGrdVwCreditCards.ReadOnly = true;
+            this.dtGrdVwCreditCards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(958, 99);
             this.dtGrdVwCreditCards.TabIndex = 39;
             // 
             // label1
@@ -524,11 +527,22 @@
             this.label1.TabIndex = 33;
             this.label1.Text = "CREDIT CARDS";
             // 
+            // bttnUnblockCard
+            // 
+            this.bttnUnblockCard.Location = new System.Drawing.Point(676, 310);
+            this.bttnUnblockCard.Name = "bttnUnblockCard";
+            this.bttnUnblockCard.Size = new System.Drawing.Size(112, 23);
+            this.bttnUnblockCard.TabIndex = 40;
+            this.bttnUnblockCard.Text = "Block/Unblock";
+            this.bttnUnblockCard.UseVisualStyleBackColor = true;
+            this.bttnUnblockCard.Click += new System.EventHandler(this.bttnUnblockCard_Click);
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 579);
+            this.ClientSize = new System.Drawing.Size(991, 579);
+            this.Controls.Add(this.bttnUnblockCard);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtGrdVwCreditCards);
             this.Controls.Add(this.groupBox2);
@@ -603,5 +617,6 @@
         private System.Windows.Forms.Label lblCurrentSum;
         private System.Windows.Forms.DataGridView dtGrdVwCreditCards;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bttnUnblockCard;
     }
 }

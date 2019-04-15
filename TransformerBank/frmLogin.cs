@@ -47,7 +47,7 @@ namespace TransformerBank
                     _count++;
                     MessageBox.Show("Wrong password");
 
-                    if (_count >= 3 && _atmManager.BlockCreditCard(card.CardNumber))
+                    if (_count >= 3 && _atmManager.AccessCreditCard(card.CardNumber,1))
                     {
                         MessageBox.Show("Card has been blocked");
                     }

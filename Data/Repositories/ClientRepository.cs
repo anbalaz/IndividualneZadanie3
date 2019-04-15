@@ -199,10 +199,7 @@ namespace Data.Repositories
                     command.Parameters.Add("@identityCard", SqlDbType.VarChar).Value = identityCard;
                     try
                     {
-                        if (command.ExecuteScalar() != null)
-                        {
-                            return Convert.ToInt32(command.ExecuteScalar());
-                        }
+                        return Convert.ToInt32(command.ExecuteScalar());
                     }
                     catch (SqlException ex)
                     {
@@ -213,7 +210,7 @@ namespace Data.Repositories
             }
         }
 
-        public int ClientUpdate(int clientId, int townId,string identityCard,string firstName,string lastName,string street,string streetNumber,string postalCode, string phoneNumber, string email)
+        public int ClientUpdate(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {

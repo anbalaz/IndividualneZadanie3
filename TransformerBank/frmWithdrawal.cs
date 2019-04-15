@@ -8,6 +8,7 @@ namespace TransformerBank
         private AtmManager _atmManager = new AtmManager();
         private BankAccount _userAccount;
         private BankAccount _bankAccount;
+
         public frmWithdrawal(int cardNumber)
         {
             InitializeComponent();

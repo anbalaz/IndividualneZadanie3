@@ -17,5 +17,7 @@ namespace Data.Repositories
         int InsertTransaction(int from, int to, decimal sum, string category);
 
         int UpdateMessage(string fieldName, int transactionId, string message);
+
+        int DeleteTransaction(int transactionId);
     }
 }

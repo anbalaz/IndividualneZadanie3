@@ -89,13 +89,11 @@ namespace BankSystem
         private void cmdCloseAccount_Click(object sender, EventArgs e)
         {
             var clientId = _client.Id;
-            if (MessageBox.Show("Are you sure you wat to close this account?", "Hodor!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you wat to close this account?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (DialogResult == DialogResult.OK)
-                {
-                    MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
-                    RefreshData(clientId);
-                }
+                MessageBox.Show(_bankManager.CloseBankAccount(_client.Id));
+                _bankManager.GetCreditCardListByClientId(clientId).ForEach(card => _bankManager.AccessCreditCard(card.CardNumber,1));
+                RefreshData(clientId);
             }
         }
 
@@ -137,6 +135,21 @@ namespace BankSystem
 
         {
             dtGrdVwCreditCards.DataSource = _bankManager.GetCreditCardListByClientId(clientId);
+        }
+
+        private void bttnUnblockCard_Click(object sender, EventArgs e)
+        {
+            int cardToUpdate = Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[2].Value);
+
+            if (Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[5].Value) > 0)
+            {
+                _bankManager.AccessCreditCard(cardToUpdate, 0);
+            }
+            else
+            {
+                _bankManager.AccessCreditCard(cardToUpdate, 1);
+            }
+            RefreshData(_client.Id);
         }
     }
 }

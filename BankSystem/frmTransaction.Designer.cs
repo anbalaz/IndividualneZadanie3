@@ -54,7 +54,7 @@
             this.txtBxSS = new System.Windows.Forms.TextBox();
             this.txtBxCS = new System.Windows.Forms.TextBox();
             this.txtBxMessage = new System.Windows.Forms.TextBox();
-            this.bttnCancel = new System.Windows.Forms.Button();
+            this.bttnClose = new System.Windows.Forms.Button();
             this.bttnOk = new System.Windows.Forms.Button();
             this.grpBxSender.SuspendLayout();
             this.grpBxReceiver.SuspendLayout();
@@ -299,19 +299,19 @@
             this.txtBxMessage.Size = new System.Drawing.Size(200, 20);
             this.txtBxMessage.TabIndex = 44;
             // 
-            // bttnCancel
+            // bttnClose
             // 
-            this.bttnCancel.Location = new System.Drawing.Point(319, 301);
-            this.bttnCancel.Name = "bttnCancel";
-            this.bttnCancel.Size = new System.Drawing.Size(75, 23);
-            this.bttnCancel.TabIndex = 45;
-            this.bttnCancel.Text = "Cancel";
-            this.bttnCancel.UseVisualStyleBackColor = true;
-            this.bttnCancel.Click += new System.EventHandler(this.bttnCancel_Click);
+            this.bttnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.bttnClose.Location = new System.Drawing.Point(353, 301);
+            this.bttnClose.Name = "bttnClose";
+            this.bttnClose.Size = new System.Drawing.Size(75, 23);
+            this.bttnClose.TabIndex = 45;
+            this.bttnClose.Text = "Close";
+            this.bttnClose.UseVisualStyleBackColor = true;
+            this.bttnClose.Click += new System.EventHandler(this.bttnCancel_Click);
             // 
             // bttnOk
             // 
-            this.bttnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.bttnOk.Location = new System.Drawing.Point(450, 301);
             this.bttnOk.Name = "bttnOk";
             this.bttnOk.Size = new System.Drawing.Size(75, 23);
@@ -326,7 +326,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 336);
             this.Controls.Add(this.bttnOk);
-            this.Controls.Add(this.bttnCancel);
+            this.Controls.Add(this.bttnClose);
             this.Controls.Add(this.txtBxMessage);
             this.Controls.Add(this.txtBxCS);
             this.Controls.Add(this.txtBxSS);
@@ -381,7 +381,7 @@
         private System.Windows.Forms.TextBox txtBxSS;
         private System.Windows.Forms.TextBox txtBxCS;
         private System.Windows.Forms.TextBox txtBxMessage;
-        private System.Windows.Forms.Button bttnCancel;
+        private System.Windows.Forms.Button bttnClose;
         private System.Windows.Forms.Button bttnOk;
     }
 }

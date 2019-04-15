@@ -14,9 +14,9 @@ namespace TransformerBank
             return _creditCardRepository.SelectCreditCardByCardNumber(cardNumber);
         }
 
-        public bool BlockCreditCard(int cardNumber)
+        public bool AccessCreditCard(int cardNumber, int blockUnblock)
         {
-            return _creditCardRepository.UpdateCardToBlock(cardNumber) > 0;
+            return _creditCardRepository.UpdateCardBlockUnblock(cardNumber, blockUnblock) > 0;
         }
 
         public BankAccount GetBankAccountByClientId(int clientId)

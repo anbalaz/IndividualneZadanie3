@@ -8,6 +8,6 @@ namespace Data.Repositories
         List<CreditCard> GeListData();
         List<CreditCard> GetCreditCardListByClientId(int clientId);
         CreditCard SelectCreditCardByCardNumber(int cardNumber);
-        int UpdateCardToBlock(int cardNumber);
+        int UpdateCardBlockUnblock(int cardNumber,int blockUnblock);
     }
 }

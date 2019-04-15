@@ -12,7 +12,8 @@ namespace BankSystem
 {
     public partial class frmMain : Form
     {
-        BankManager _bankManager = new BankManager();
+        private BankManager _bankManager = new BankManager();
+        public const int BANK_IDENTIY = 1;
         public frmMain()
         {
             InitializeComponent();
@@ -20,8 +21,8 @@ namespace BankSystem
 
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
-           
-            if (_bankManager.ClientId(txtBxSearchIdentity.Text)!=0)
+            int identity = _bankManager.ClientId(txtBxSearchIdentity.Text);
+            if (identity != 0 && identity!= BANK_IDENTIY)
             {
                 using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(txtBxSearchIdentity.Text)))
                 {

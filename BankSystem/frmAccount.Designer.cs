@@ -62,7 +62,7 @@
             // 
             // iBANtxtBx
             // 
-            this.iBANtxtBx.Location = new System.Drawing.Point(9, 76);
+            this.iBANtxtBx.Location = new System.Drawing.Point(9, 48);
             this.iBANtxtBx.Name = "iBANtxtBx";
             this.iBANtxtBx.Size = new System.Drawing.Size(208, 20);
             this.iBANtxtBx.TabIndex = 6;
@@ -79,7 +79,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 60);
+            this.label4.Location = new System.Drawing.Point(6, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 9;
@@ -280,11 +280,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.iBANtxtBx);
+            this.groupBox2.Controls.Add(this.limitUpDwn);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(363, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(244, 170);
+            this.groupBox2.Size = new System.Drawing.Size(244, 179);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "BANK ACCOUNT ";
@@ -297,7 +298,7 @@
             0,
             0,
             0});
-            this.limitUpDwn.Location = new System.Drawing.Point(363, 203);
+            this.limitUpDwn.Location = new System.Drawing.Point(9, 144);
             this.limitUpDwn.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -324,7 +325,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 353);
             this.Controls.Add(this.bttnUpdateClient);
-            this.Controls.Add(this.limitUpDwn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CancelBttn);
             this.Controls.Add(this.bttnCreateClient);

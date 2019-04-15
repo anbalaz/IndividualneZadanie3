@@ -20,6 +20,7 @@ namespace Data.Repositories
         private string _insertTransaction = @"INSERT INTO Transactions(BankAccountIdFrom,BankAccountIdTo,MoneyTransaction,Category,DateOfTransaction)
                                               output inserted.Id
                                               VALUES ((SELECT Id FROM BankAccount WHERE ID=@from),(SELECT Id FROM BankAccount WHERE ID=@to),@sum,@category,GETDATE());";
+        private string _deleteTransaction = @"Delete Transactions WHERE Id=@transactionId";
 
         public DataSet GetAllTransactions()
         {
@@ -127,6 +128,29 @@ namespace Data.Repositories
                     }
                 }
                 return 0;
+            }
+        }
+
+        public int DeleteTransaction(int transactionId)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = _deleteTransaction;
+                        command.Parameters.Add("@transactionId", SqlDbType.Int).Value = transactionId;
+
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return 0;
+                    }
+                }
             }
         }
     }

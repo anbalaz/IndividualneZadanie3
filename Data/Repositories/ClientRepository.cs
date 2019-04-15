@@ -60,6 +60,14 @@ namespace Data.Repositories
                                         INNER JOIN Town AS t ON c.TownId=t.Id
                                         WHERE c.IdentityCard =@identityCard";
 
+        private string _selectClientByIBAN = @" SELECT 
+                                            	c.Id,
+                                            	c.FirstName,
+                                            	c.LastName
+                                            	FROM Client as c
+                                               INNER JOIN BankAccount as ba ON c.Id= ba.ClientId
+                                               WHERE ba.IBAN =@IBAN;";
+
         public int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
@@ -239,6 +247,39 @@ namespace Data.Repositories
                         return 0;
                     }
                 }
+            }
+        }
+
+        public Client SelectClientByIBAN(string IBAN)
+        {
+            Client client = new Client();
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _selectClientByIBAN;
+                    command.Parameters.Add("@IBAN", SqlDbType.VarChar).Value = IBAN;
+                    try
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            {
+                                while (reader.Read())
+                                {
+                                    client.Id = reader.GetInt32(0);
+                                    client.FirstName = reader.GetString(1);
+                                    client.LastName = reader.GetString(2);
+                                }
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return client;
             }
         }
     }

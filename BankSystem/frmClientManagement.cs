@@ -82,7 +82,10 @@ namespace BankSystem
             int clientId = _client.Id;
             using (frmTransaction newForm = new frmTransaction(clientId))
             {
-                newForm.ShowDialog();
+                if (newForm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshData(clientId);
+                }
             }
         }
 
@@ -128,6 +131,7 @@ namespace BankSystem
                 cmdUpdate.Enabled = false;
                 cmdNewTransaction.Enabled = false;
                 cmdCloseAccount.Enabled = false;
+                bttnUnblockCard.Enabled = false;
             }
         }
 

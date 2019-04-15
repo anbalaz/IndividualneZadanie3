@@ -25,6 +25,15 @@ namespace Data.Repositories
                                                     INNER JOIN Client as c ON ba.ClientId= c.Id
                                                     WHERE c.Id =@id;";
 
+        private string _selectBankAccountByIBAN = @" SELECT 
+                                                      ba.Id
+                                                     ,IBAN 
+                                                     ,CreationAccountDate
+                                                     ,TerminationDate
+                                                     ,CurrentSum
+                                                     ,Limit FROM BankAccount as ba
+                                                     WHERE ba.IBAN =@IBAN;";
+
         private string _updateBankAccount = @"	Update BankAccount 
                                                 SET Limit=@limit
                                                 WHERE ClientId=@id";
@@ -41,7 +50,7 @@ namespace Data.Repositories
                                                   			FROM Transactions
                                                   			WHERE Id=@transactionId);";
 
-        private string _selectBankAccountByCardNumber= @"SELECT 
+        private string _selectBankAccountByCardNumber = @"SELECT 
                                                          ba.Id
                                                         ,IBAN 
                                                         ,CreationAccountDate
@@ -262,6 +271,49 @@ namespace Data.Repositories
                     }
                 }
                 return 0;
+            }
+        }
+
+        public BankAccount SelectBankAccountByIBAN(string IBAN)
+        {
+            BankAccount bankAccount = new BankAccount();
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = _selectBankAccountByIBAN;
+                    command.Parameters.Add("@IBAN", SqlDbType.VarChar).Value = IBAN;
+                    try
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            {
+                                while (reader.Read())
+                                {
+                                    bankAccount.Id = reader.GetInt32(0);
+                                    bankAccount.IBAN = reader.GetString(1);
+                                    bankAccount.CreationAccountDate = reader.GetDateTime(2);
+                                    if (!reader.IsDBNull(3))
+                                    {
+                                        bankAccount.TerminationDate = reader.GetDateTime(3);
+                                    }
+                                    else
+                                    {
+                                        bankAccount.TerminationDate = DateTime.MinValue;
+                                    }
+                                    bankAccount.CurrentSum = reader.GetDecimal(4);
+                                    bankAccount.Limit = reader.GetDecimal(5);
+                                }
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n{ ex}");
+                    }
+                }
+                return bankAccount;
             }
         }
     }

@@ -13,6 +13,7 @@ namespace BankSystem
         private ITownRepository _townRepository = new TownRepository();
         private ICreditCardRepository _creditCardRepository = new CreditCardRepository();
         private ITransactionsRepository _transactionsRepository = new TransactionsRepository();
+        public const int BANK_IDENTIY = 1;
 
         public String CreateClientAndBankAccount(string identityCard,
                                                 string firstName,
@@ -178,6 +179,16 @@ namespace BankSystem
         public bool IsTransactionUnderLimit(decimal curSum, decimal limit, decimal transaction)
         {
             return (curSum + limit) >= transaction;
+        }
+
+        public Client GetClientByIBAN(string IBAN)
+        {
+            return _clientRepository.SelectClientByIBAN(IBAN);
+        }
+
+        public BankAccount GetBankAccountByIBAN(string IBAN)
+        {
+            return _bankAccountRepository.SelectBankAccountByIBAN(IBAN);
         }
     }
 }

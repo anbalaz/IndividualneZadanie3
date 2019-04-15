@@ -11,5 +11,6 @@ namespace Data.Repositories
         DataSet GetClientSearch(string identityCard);
         int ClientId(string identityCard);
         int ClientUpdate(int clientId, int townId, string identityCard, string firstName, string lastName, string street, string streetNumber, string postalCode, string phoneNumber, string email);
+        Client SelectClientByIBAN(string IBAN);
     }
 }

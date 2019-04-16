@@ -56,7 +56,6 @@ namespace BankSystem
             }
         }
 
-
         public void RefreshData()
         {
             lblSumMoney.Text = _bankManager.GetSumOfMoneyOnAccounts().ToString();
@@ -67,13 +66,21 @@ namespace BankSystem
             dtGrdVwTopClients.DataMember = "Clients";
             dtGrdVwMonths.DataSource = _bankManager.GetNewclients();
             dtGrdVwMonths.DataMember = "NewClients";
-
-
         }
 
         private void bttnRefresh_Click(object sender, EventArgs e)
         {
             RefreshData();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            dtGrdVwTopTowns.DataSource = _bankManager.GetTopTowns();
+            dtGrdVwTopTowns.DataMember = "Towns";
+            dtGrdVwTopClients.DataSource = _bankManager.GetTopClients();
+            dtGrdVwTopClients.DataMember = "Clients";
+            dtGrdVwMonths.DataSource = _bankManager.GetNewclients();
+            dtGrdVwMonths.DataMember = "NewClients";
         }
     }
 }

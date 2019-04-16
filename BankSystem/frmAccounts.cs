@@ -23,6 +23,7 @@ namespace BankSystem
                 using (frmClientManagement newForm = new frmClientManagement(_bankManager.ClientId(clientIdentityCard)))
                 {
                     newForm.ShowDialog();
+                    Close();
                 }
             }
             else
@@ -37,6 +38,11 @@ namespace BankSystem
 
             searchedClientsDtGrdVw.DataSource = clients;
             searchedClientsDtGrdVw.DataMember = "Clients";
+        }
+
+        private void bttnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

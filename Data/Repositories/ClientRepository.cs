@@ -68,11 +68,12 @@ namespace Data.Repositories
                                                INNER JOIN BankAccount as ba ON c.Id= ba.ClientId
                                                WHERE ba.IBAN =@IBAN;";
 
-        private string _selectNewclients = @"Select MONTH(ba.CreationAccountDate) as [MONTH], COUNT(*) AS [COUNT] 
-                                             from BankAccount ba
-                                             where ba.CreationAccountDate >= DATEADD(MONTH,-6,GETDATE()) AND id <>1 AND TerminationDate IS Null
-                                             group by MONTH(ba.CreationAccountDate)
-                                             ORDER BY [MONTH] DESC";
+        private string _selectNewclients = @"SELECT  CONCAT(YEAR(ba.CreationAccountDate),'/',Format(ba.CreationAccountDate,'MMMM'))  as [YEAR/MONTH],
+                                            COUNT(*) AS [COUNT] 
+                                            FROM BankAccount AS ba
+                                            where ba.CreationAccountDate >= DATEADD(MONTH,-6,GETDATE()) AND id <>1 AND TerminationDate IS Null
+                                            GROUP BY  CONCAT(YEAR(ba.CreationAccountDate),'/',Format(ba.CreationAccountDate,'MMMM'))
+                                            ORDER BY [YEAR/MONTH] ASC";
 
         public int CreateClient(string identityCard, string firstName, string lastName, int town, string street, string streetNumber, string postalCode, string phoneNumber, string email)
         {

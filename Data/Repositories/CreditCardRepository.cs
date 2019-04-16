@@ -8,13 +8,12 @@ namespace Data.Repositories
 {
     public class CreditCardRepository : ICreditCardRepository
     {
-
         private string _getCreditCardListByClientId = @"SELECT cc.Id,
                                                         cc.CardNumber,
                                                         cc.CreationCardDate,
                                                         cc.ExpirationDate, 
-                                                        cc.IsCardBlocked, 
-                                                        cc.PasswordCard FROM CreditCard as cc
+                                                        cc.IsCardBlocked 
+                                                        FROM CreditCard as cc
                                                     INNER JOIN (BankAccount AS ba INNER JOIN Client as c ON ba.ClientId= c.Id)ON cc.BankAccountId= ba.Id
                                                      WHERE c.Id = @id;";
 
@@ -27,7 +26,11 @@ namespace Data.Repositories
                                                 WHERE CardNumber=@cardNumber";
 
         private string _insertCreditCardByBankAccountId = @"INSERT INTO CreditCard (BankAccountId,CardNumber,CreationCardDate,ExpirationDate,IsCardBlocked,PasswordCard)
-                            VALUES ((SELECT Id FROM BankAccount WHERE ID=@bankAccountId),@cardNumber,GETDATE(),DATEADD(YEAR,5,GETDATE()),0,@cardPassword);";
+                                                            VALUES ((SELECT Id FROM BankAccount WHERE ID=@bankAccountId),@cardNumber,GETDATE(),DATEADD(YEAR,5,GETDATE()),0,@cardPassword);";
+
+        private string _updateCardNewPassword= @"Update CreditCard
+                                                Set PasswordCard=@password
+                                                Where CardNumber=@cardNumber";
 
         public List<CreditCard> SelectCreditCardListByClientId(int clientId)
         {
@@ -52,7 +55,7 @@ namespace Data.Repositories
                                     creditCard.CreationCardDate = reader.GetDateTime(2);
                                     creditCard.ExpirationDate = reader.GetDateTime(3);
                                     creditCard.IsCardBlocked = reader.GetBoolean(4);
-                                    creditCard.PasswordCard = reader.GetString(5).Trim();
+                                    //creditCard.PasswordCard = reader.GetString(5).Trim();
                                     creditCards.Add(creditCard);
                                 }
                             }
@@ -165,6 +168,29 @@ namespace Data.Repositories
                         command.Parameters.Add("@cardNumber", SqlDbType.Int).Value = cardNumber;
                         command.Parameters.Add("@cardPassword", SqlDbType.VarChar).Value = cardPassword;
 
+                        return command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return 0;
+                    }
+                }
+            }
+        }
+
+        public int UpdateCardNewPassword(int password, int cardNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = _updateCardNewPassword;
+                        command.Parameters.Add("@password", SqlDbType.Int).Value = password;
+                        command.Parameters.Add("@cardNumber", SqlDbType.Int).Value = cardNumber;
                         return command.ExecuteNonQuery();
                     }
                     catch (SqlException ex)

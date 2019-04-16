@@ -11,5 +11,6 @@ namespace Data.Repositories
         CreditCard SelectCreditCardByCardNumber(int cardNumber);
         int InsertCreditCardByBankAccountId(int bankAccountId, int cardNumber, int cardPassword);
         int UpdateCardBlockUnblock(int cardNumber,int blockUnblock);
+        int UpdateCardNewPassword(int password, int cardNumber);
     }
 }

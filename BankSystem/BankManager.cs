@@ -249,7 +249,7 @@ namespace BankSystem
             int cardNumber = random.Next(10000000, 99999999);
             if (_creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, password) > 0)
             {
-                ret = "Card was  created";
+                ret = $"Card was  created, password is {password}";
             }
             return ret;
         }
@@ -278,7 +278,11 @@ namespace BankSystem
         {
             return _clientRepository.SelectNewclients();
         }
+        public String UpdateCardNewPassword(int password, int cardNumber)
+        {
+            return (_creditCardRepository.UpdateCardNewPassword(password, cardNumber) > 0) ? $"Password was changed to {password}" : "Password was not changed!";
 
+        }
 
     }
 }

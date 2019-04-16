@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmdUpdate = new System.Windows.Forms.Button();
             this.cmdNewTransaction = new System.Windows.Forms.Button();
             this.cmdCloseAccount = new System.Windows.Forms.Button();
@@ -69,6 +73,8 @@
             this.bttnUnblockCard = new System.Windows.Forms.Button();
             this.bttnAddCard = new System.Windows.Forms.Button();
             this.bttnClose = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bttnChangePassword = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwCreditCards)).BeginInit();
@@ -444,12 +450,37 @@
             this.dtGrdVwCreditCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGrdVwCreditCards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdVwCreditCards.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtGrdVwCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGrdVwCreditCards.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtGrdVwCreditCards.Location = new System.Drawing.Point(12, 194);
             this.dtGrdVwCreditCards.Name = "dtGrdVwCreditCards";
             this.dtGrdVwCreditCards.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdVwCreditCards.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtGrdVwCreditCards.RowHeadersVisible = false;
             this.dtGrdVwCreditCards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(652, 99);
+            this.dtGrdVwCreditCards.Size = new System.Drawing.Size(652, 119);
             this.dtGrdVwCreditCards.TabIndex = 39;
             // 
             // label1
@@ -492,12 +523,23 @@
             this.bttnClose.UseVisualStyleBackColor = true;
             this.bttnClose.Click += new System.EventHandler(this.bttnClose_Click);
             // 
+            // bttnChangePassword
+            // 
+            this.bttnChangePassword.Location = new System.Drawing.Point(517, 360);
+            this.bttnChangePassword.Name = "bttnChangePassword";
+            this.bttnChangePassword.Size = new System.Drawing.Size(112, 23);
+            this.bttnChangePassword.TabIndex = 43;
+            this.bttnChangePassword.Text = "Change password";
+            this.bttnChangePassword.UseVisualStyleBackColor = true;
+            this.bttnChangePassword.Click += new System.EventHandler(this.bttnChangePassword_Click);
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 579);
             this.ControlBox = false;
+            this.Controls.Add(this.bttnChangePassword);
             this.Controls.Add(this.bttnClose);
             this.Controls.Add(this.bttnAddCard);
             this.Controls.Add(this.bttnUnblockCard);
@@ -566,5 +608,7 @@
         private System.Windows.Forms.Button bttnUnblockCard;
         private System.Windows.Forms.Button bttnAddCard;
         private System.Windows.Forms.Button bttnClose;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button bttnChangePassword;
     }
 }

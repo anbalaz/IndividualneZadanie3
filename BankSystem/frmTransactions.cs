@@ -1,12 +1,4 @@
-﻿using Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace BankSystem
@@ -23,8 +15,6 @@ namespace BankSystem
             InitializeComponent();
             SetUpAllTransactionsGridSet();
         }
-
-
 
         private void SetUpAllTransactionsGridSet()
         {
@@ -46,6 +36,16 @@ namespace BankSystem
         {
             InitializeComponent();
             SetUpTransactionsByIdGridSet(clientId);
+        }
+
+        private void bttnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            SetUpAllTransactionsGridSet();
         }
     }
 }

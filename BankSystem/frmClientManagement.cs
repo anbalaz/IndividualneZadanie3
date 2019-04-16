@@ -168,5 +168,10 @@ namespace BankSystem
         {
             Close();
         }
+
+        private void bttnChangePassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

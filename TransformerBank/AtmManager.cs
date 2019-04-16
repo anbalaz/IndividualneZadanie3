@@ -13,7 +13,13 @@ namespace TransformerBank
         {
             return _creditCardRepository.SelectCreditCardByCardNumber(cardNumber);
         }
-
+        /// <summary>
+        /// chceks if sum you want to take out of account is not over client s limit
+        /// </summary>
+        /// <param name="curSum"></param>
+        /// <param name="limit"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool AccessCreditCard(int cardNumber, int blockUnblock)
         {
             return _creditCardRepository.UpdateCardBlockUnblock(cardNumber, blockUnblock) > 0;
@@ -28,12 +34,29 @@ namespace TransformerBank
         {
             return _bankAccountRepository.SelectBankAccountByCardNumber(creditNumber);
         }
-
+        /// <summary>
+        /// chceks if sum you want to take out of account is not over client s limit
+        /// </summary>
+        /// <param name="curSum"></param>
+        /// <param name="limit"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool IsTransactionUnderLimit(decimal curSum, decimal limit, decimal transaction)
         {
             return (curSum + limit) >= transaction;
         }
-
+        /// <summary>
+        /// if transaction is successfull but there is problem with accounts it delete last transaction
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="sum"></param>
+        /// <param name="category"></param>
+        /// <param name="VS"></param>
+        /// <param name="CS"></param>
+        /// <param name="SS"></param>
+        /// <param name="MessageForReceiver"></param>
+        /// <returns>returns statement how did the trasaction go</returns>
         public string CreateTransaction(int from, int to, decimal sum, string category)
         {
             string ret;

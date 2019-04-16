@@ -38,7 +38,11 @@ namespace BankSystem
             InitializeFieldsClientbyId(clientId);
             bttnCreateClient.Visible = false;
         }
-
+        /// <summary>
+        /// Used to add new client, returns message if it was successfull
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void createClientBttn_Click(object sender, EventArgs e)
         {
             if (!identityCardTxtBx.Text.Equals(string.Empty) &&

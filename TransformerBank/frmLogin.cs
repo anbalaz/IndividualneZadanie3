@@ -10,7 +10,6 @@ namespace TransformerBank
         private int _count = 0;
         private int cardNumber;
         public frmLogin()
-
         {
             InitializeComponent();
         }
@@ -26,7 +25,6 @@ namespace TransformerBank
             else
             {
                 CreditCard card = _atmManager.GetCreditCardByCardNumber(login);
-
                 if (card.Id == 0)
                 {
                     MessageBox.Show("WrongCard Number");
@@ -35,7 +33,7 @@ namespace TransformerBank
                 {
                     MessageBox.Show("Card is not Valid, please check with BankIslam Personel");
                 }
-                else if (card.Id != 0 && card.PasswordCard.Equals(nmrcTxtBxPassword.Text))
+                else if (card.Id != 0 && card.PasswordCard.Equals(_atmManager.CalculateMD5Hash(nmrcTxtBxPassword.Text)))
                 {
                     Close();
                     using (frmWithdrawal newForm = new frmWithdrawal(card.CardNumber))
@@ -49,7 +47,6 @@ namespace TransformerBank
                     {
                         cardNumber = login;
                         _count = 0;
-
                     }
                     _count++;
                     MessageBox.Show("Wrong password");

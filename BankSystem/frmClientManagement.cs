@@ -171,7 +171,10 @@ namespace BankSystem
 
         private void bttnChangePassword_Click(object sender, EventArgs e)
         {
-
+            using (frmCardPassword newForm = new frmCardPassword(Convert.ToInt32(dtGrdVwCreditCards.SelectedCells[1].Value)))
+            {
+                newForm.ShowDialog();
+            }
         }
     }
 }

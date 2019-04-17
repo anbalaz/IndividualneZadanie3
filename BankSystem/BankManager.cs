@@ -3,6 +3,8 @@ using Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace BankSystem
 {
@@ -247,7 +249,7 @@ namespace BankSystem
             Random random = new Random();
             int password = random.Next(1000, 9999);
             int cardNumber = random.Next(10000000, 99999999);
-            if (_creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, password) > 0)
+            if (_creditCardRepository.InsertCreditCardByBankAccountId(bankAccountId, cardNumber, CalculateMD5Hash(password.ToString())) > 0)
             {
                 ret = $"Card was  created, password is {password}";
             }
@@ -278,10 +280,26 @@ namespace BankSystem
         {
             return _clientRepository.SelectNewclients();
         }
+
         public String UpdateCardNewPassword(int password, int cardNumber)
         {
-            return (_creditCardRepository.UpdateCardNewPassword(password, cardNumber) > 0) ? $"Password was changed to {password}" : "Password was not changed!";
+            return (_creditCardRepository.UpdateCardNewPassword(CalculateMD5Hash(password.ToString()), cardNumber) > 0) ? $"Password was changed to {password}" : "Password was not changed!";
+        }
 
+        public string CalculateMD5Hash(string input)
+        {
+            // step 1, calculate MD5 hash from input
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            // step 2, convert byte array to hex string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("x2"));
+            }
+            return sb.ToString();
         }
 
     }

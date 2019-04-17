@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankManager.cs" />
+    <Compile Include="frmCardPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCardPassword.Designer.cs">
+      <DependentUpon>frmCardPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClientManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAccount.resx">
       <DependentUpon>frmAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCardPassword.resx">
+      <DependentUpon>frmCardPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClientManagement.resx">
       <DependentUpon>frmClientManagement.cs</DependentUpon>

@@ -154,7 +154,7 @@ namespace Data.Repositories
             }
         }
 
-        public int InsertCreditCardByBankAccountId(int bankAccountId, int cardNumber, int cardPassword)
+        public int InsertCreditCardByBankAccountId(int bankAccountId, int cardNumber, string cardPassword)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
@@ -179,7 +179,7 @@ namespace Data.Repositories
             }
         }
 
-        public int UpdateCardNewPassword(int password, int cardNumber)
+        public int UpdateCardNewPassword(string password, int cardNumber)
         {
             using (SqlConnection connection = new SqlConnection(RouteConst.CONNECTION_STRING))
             {
@@ -189,7 +189,7 @@ namespace Data.Repositories
                     try
                     {
                         command.CommandText = _updateCardNewPassword;
-                        command.Parameters.Add("@password", SqlDbType.Int).Value = password;
+                        command.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
                         command.Parameters.Add("@cardNumber", SqlDbType.Int).Value = cardNumber;
                         return command.ExecuteNonQuery();
                     }
